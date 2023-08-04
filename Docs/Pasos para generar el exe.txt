@@ -1,0 +1,7 @@
+1- Mover el archivo dist antiguo al sharepoint y removerlo del repositorio que se encuentra en Enviroment  
+2- Navegar a la ubicacion del script. C:\Users\LuisGonzalez\ayahealthcare.com\Costa Rica IT - Documents\Software\Phyton\PDF TimeSheet Reader
+3- ejecutar el comando: pyinstaller --onedir pdfreader.py
+4- Copiar el folder "Tabula" y el file "Regex.json" dentro del folder Dist ---> pdfreader. El folder y el file estan el los files del script en sharepoint
+5- Crear el folder output dentro de dist.
+6- Crear el .zip de dist.
+7- Mover el nuevo dist y el Zip en Environment 

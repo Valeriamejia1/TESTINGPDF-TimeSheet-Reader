@@ -1,0 +1,48 @@
+original
+
+pycache
+.vs
+build
+dist
+Documentacion
+tabula
+audit_pdf.txt (se elimina)
+dist V3.0.zip
+kronosAPI.py
+logUKGcommon.py
+outputAPI.py
+pdfreader.py
+pdfreader.spec
+pdftesting.py
+pdftoexcel.py
+pdfUKG.py
+pdfUKGcommon.py
+Regex.json
+RegexOld.json (Se elimina)
+windowshandlers.py
+
+
+modificado
+
+pycache
+.vs
+build
+Environment
+	dist
+	dist V3.0.zip
+Documentacion --->Docs
+tabula
+Classes
+	outputAPI.py
+	logUKGcommon.py ----> outputUKGcommon.py
+	pdftesting.py  ----> auditPDFdefault.py
+Modules
+	kronosAPI.py ---> pdfAPI.py
+	pdftoexcel.py ----> pdfDefault.py
+	pdfUKG.py ----> pdfUKGsimplified.py
+	pdfUKGcommon.py
+pdfreader.py
+pdfreader.spec
+Regex.json
+View
+	windowshandlers.py
