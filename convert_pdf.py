@@ -1,19 +1,17 @@
 from Modules.pdfPaylocity import main
 
-# Definir los argumentos necesarios para la función main
-response = None  # Puedes proporcionar el valor adecuado si es necesario
-
-files = ["PDF/Haynie, Nathan.pdf", "PDF/Hobbs, Brandy.pdf"]
-
+# Lista de nombres de archivos PDF a convertir
+pdf_files = ["PDF/Haynie, Nathan.pdf", "PDF/Hobbs, Brandy.pdf"]
 reportType = "Paylocity"
 
-# Directorio de salida personalizado en tu repositorio
-output_directory = "Output"
+for pdf_file in pdf_files:
+    # Definir los argumentos necesarios para la función main
+    response = None  # Puedes proporcionar el valor adecuado si es necesario
+    
+    # Llamar a la función main para convertir el PDF en Excel
+    result = main(response, pdf_file, reportType)
 
-# Iterar sobre la lista de archivos y llamar a la función main para cada archivo
-for file in files:
-    result = main(response, file, reportType)
     if result:
-        print(f"La conversión para el archivo '{file}' se realizó con éxito.")
+        print(f"La conversión del archivo {pdf_file} se realizó con éxito.")
     else:
-        print(f"La conversión para el archivo '{file}' falló o no se encontraron datos.")
+        print(f"La conversión del archivo {pdf_file} falló o no se encontraron datos.")
