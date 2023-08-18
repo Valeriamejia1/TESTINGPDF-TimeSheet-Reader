@@ -3,7 +3,7 @@ from Modules.pdfPaylocity import main
 # Definir los argumentos necesarios para la función main
 response = None  # Puedes proporcionar el valor adecuado si es necesario
 
-files = ["PDF\Haynie, Nathan.pdf", "PDF\Hobbs, Brandy.pdf"]
+files = ["PDF/Haynie, Nathan.pdf", "PDF/Hobbs, Brandy.pdf"]
 
 reportType = "Paylocity"
 
