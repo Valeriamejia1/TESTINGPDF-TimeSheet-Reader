@@ -75,5 +75,5 @@ class UKGKronos:
     def getComments(value,reportType, comment):
         commentAux =  re.search(regexlist[reportType]["getcomment"], str(value)) #Search a match on the value by using a regex to get comments
         commentAux= commentAux.group(0)
-        comment= comment + commentAux  #concatenate
+        comment= comment + " " + commentAux  #concatenate
         return comment

@@ -13,12 +13,13 @@
         "getGL3": "\\d{6}\/",
 
         "startDateTime": "Xfr:\\s\\s?Work\\sRule|Cum.\\sTot.",
-        "searchDateTime": "(?!\\d{1,2}\/\\d{1,2}\/\\d{4}[/)])^\\d{1,2}\/\\d{1,2}\/\\d{4}",
+        "searchDateTime": "(?!\\d{1,2}\/\\d{1,2}\/\\d{4}[/)])(^\\d{1,2}\/\\d{1,2}\/\\d{4}|^([AMP])?\\d{1,2}([AMP])?\/M\\d{1,2}\/\\d{4})",
         "getTime": "\\d{1,2}:\\d{2}:\\d{2}",
         "getTime2": "\\d{1,2}:\\d{2}",
         "getcomment": "[a-zA-Z][^AM,PM]+",
 
         "searchSepTimeOut" : "\\d{1,2}:\\d{2}:\\d{2}\\s[AM|PM]+$",
+        "searchSepTimeOut2" : "(\\d{1,2}:\\d{2}:\\d{2}\\s[AP]M)\\s+(\\d{1,2}:\\d{2}:\\d{2}\\s[AP]M)",
 
         "searchSepTime": "^\\d{1,2}:\\d{2}:\\d{2}\\s[AM|PM]",
         "extraComment":"^\\d{1,2}:\\d{2}\\s(AM|PM)",
@@ -35,7 +36,7 @@
     
         "getExtraPayCode": "\\d+-\\w+\\s\\w+",
 
-        "extraGL":"\/\\d{4}(\\-|\\.)\\d{4}(\\-|\\.)\\d{4,5}|-\\s\\d{4}\/|\/\\d{4}\/\\d{4}\/|\/\\d{3,4}(-\\d{3,4})?\/|\/\\d{14}\/|\/\\d{12}\/|\/\\d{10}\/|\/\\d{9}\/|^\\d{8}\/|\/\\d{5,7}\/|^\\d{3}\/(?!\/?\\d{4}\/)|\/\\d{4}\\-|\\d{6}\/",
+        "extraGL":"\/\\d{4}(\\-|\\.)\\d{4}(\\-|\\.)\\d{4,5}|-\\s\\d{4}\/|\/\\d{4}\/\\d{4}\/|\/\\d{3,4}(-\\d{2,4})?(-\\d{2,4})?\/|\/\\d{14}\/|\/\\d{12}\/|\/\\d{10}\/|\/\\d{9}\/|^\\d{8}\/|\/\\d{5,7}\/|^\\d{3}\/(?!\/?\\d{4}\/)|\/\\d{4}\\-|\\d{6}\/",
 
         "output_file":"C:/dist/output/",
 
@@ -79,13 +80,15 @@
         "searchDepartment":"\\d{4,6}|TRAVELERS\\sINPT",
         "getDepartment":"\\d{4,6}|TRAVELERS\\sINPT",
 
-        "getSpecialCode" :"ORIENT|CHARGE|CB|FLOAT|PRE\\sSTU\\sNON\\sHLGU|PRE\\sHLGU",
+        "getSpecialCode" :"ORIENT|CHARGE|CB|FLOAT|PRE\\sSTU\\sNON\\sHLGU|PRE\\sHLGU|LU",
 
         "GethPayCodeRow":"SCHED\\sORIENT|NSCTO|LCUP|YYY|SB|XXX|LUNCH|CALL|SCHED|PTONOP",
         "SearchPayCodeRow" : "Device|Description",
         "GetPayCodeColumn" :"REG|LCUP|YYY|DT|NSCUP|WKDF|REG2|REG3|OT|EDUC|^ORIENT\\b|SH2|SH3|SDW|OT2|OTP|ORT|PRECP|ORIOT|INSOT|INSED|BEREV|STAFF|Missed Meal|OC|XXX|SB|LUNCH|CALL|CBACK|CBMIN|^ORIEN\\b|FLOAT|PTONOP",
 
         "getHours2":"\\d+\\.\\d+",
+
+        "KeyPaycode" : "\\[",
 
         "output_file":"C:/dist/output/"
     },
@@ -96,11 +99,12 @@
         "getEMPL": "(:\\s.+?(?=\\sID:))",
 
         "searchPrimeryJob" : "Primary\\sLabor\\sCategory\\:",
+        "getPrimaryJob" : "^[^:\n]*\/[^:\n]*|^RN|^CN",
 
         "searchDate" : "Work\\sRule",
         "getDate": "\\d{4}\\-\\d{2}\\-\\d{2}",
 
-        "searchPaycode" : "On\\sCall|ABS\\sAbsence|Absence|Unexcused|LOWV\\s-\\sUnPaid|LOW\\sVoluntary|Excused\\sAbsence|LOWWI\\s\\-\\sUnPd|Weekender\\sLOW|FTC|LTCL\\sLate\\sCall|NCNS\\sNo\\sCall\\sNo|Show",
+        "searchPaycode" : "On\\sCall|ABS\\sAbsence|Absence|Unexcused|LOWV\\s-\\sUnPaid|LOW\\sVoluntary|Excused\\sAbsence|LOWWI\\s\\-\\sUnPd|Weekender\\sLOW|FTC|LTCL\\sLate\\sCall|NCNS\\sNo\\sCall\\sNo|Show|Not\\sTo\\sBe\\sSched|RNTBS-Request|LOWI\\s-\\sUnpaid|LOW\\sInvoluntary",
 
         "getInhour" : "\\d{1,2}:\\d{2}\\s(AM|PM)",
 
@@ -110,6 +114,7 @@
         "getGL" : "\\:\\d{4}\\-\\d{4}\\-\\d{4,5}",
 
         "getComment" : "^[^:\n]*\/[^:\n]*|^RN|^CN|\\d{4}\\-\\d{4}\\-\\d{4,5}",
+        "getComment2" : "^[^:\n]*\/[^:\n]*|^RN|^CN|\\d{4}\\-\\d{4}\\-\\d{4,5}|([A-Z0-9]+),(.*),(.*),(.*)(,(.*),)?([A-Za-z0-9]+)|^(?!.*\\bCOMMON\\b)\\w+(\\s)?\\-(\\s)?\\w+(\\s\\w+)?|^(?!.*\\bCondensed\\b)\\w+\\s\\w+\\s\\w+\\s\\w+",
 
         "breakLoop" : "Labor\\sSummary",
         "startPage" : "Condensed\\sEmployee\\sTime\\sDetail",
@@ -165,7 +170,26 @@
 
         "output_file":"C:/dist/output/"
 
-    }
+    },
 
+    "Paylocity" : {
+
+        "searchName" : "ID:",
+        "getName" : "\\w+\\,\\s\\w+",
+        
+        "searchDate" : "Entity",
+        "getDate" : "\\d{1,2}\/\\d{1,2}\/\\d{4}",
+
+        "getInHour" : "\\d{1,2}:\\d{2}[AP]M",
+
+        "getHours" : "\\d{1,2}\\.\\d{2}",
+
+        "searchPayType" : "Work|Lunch|Unpaid\\sTime\\sOff",
+
+        "searchGL" : "Class",
+        "getGL": "\\d+",
+
+        "output_file":"C:/dist/output/"
+    }
 
 }

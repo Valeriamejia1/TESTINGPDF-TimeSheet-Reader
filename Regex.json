@@ -40,7 +40,11 @@
 
         "output_file":"C:/dist/output/",
 
-        "searchEntireGL": "^.*\\s(?![A-Z])|^.*(?![A-Z])"
+        "searchEntireGL": "^.*\\s(?![A-Z])|^.*(?![A-Z])",
+
+        "searchExpData" : "^Data"
+
+
 
     },
 
@@ -80,13 +84,15 @@
         "searchDepartment":"\\d{4,6}|TRAVELERS\\sINPT",
         "getDepartment":"\\d{4,6}|TRAVELERS\\sINPT",
 
-        "getSpecialCode" :"ORIENT|CHARGE|CB|FLOAT|PRE\\sSTU\\sNON\\sHLGU|PRE\\sHLGU",
+        "getSpecialCode" :"ORIENT|CHARGE|CB|FLOAT|PRE\\sSTU\\sNON\\sHLGU|PRE\\sHLGU|LU",
 
         "GethPayCodeRow":"SCHED\\sORIENT|NSCTO|LCUP|YYY|SB|XXX|LUNCH|CALL|SCHED|PTONOP",
         "SearchPayCodeRow" : "Device|Description",
         "GetPayCodeColumn" :"REG|LCUP|YYY|DT|NSCUP|WKDF|REG2|REG3|OT|EDUC|^ORIENT\\b|SH2|SH3|SDW|OT2|OTP|ORT|PRECP|ORIOT|INSOT|INSED|BEREV|STAFF|Missed Meal|OC|XXX|SB|LUNCH|CALL|CBACK|CBMIN|^ORIEN\\b|FLOAT|PTONOP",
 
         "getHours2":"\\d+\\.\\d+",
+
+        "KeyPaycode" : "\\[",
 
         "output_file":"C:/dist/output/"
     },
@@ -97,11 +103,12 @@
         "getEMPL": "(:\\s.+?(?=\\sID:))",
 
         "searchPrimeryJob" : "Primary\\sLabor\\sCategory\\:",
+        "getPrimaryJob" : "^[^:\n]*\/[^:\n]*|^RN|^CN",
 
         "searchDate" : "Work\\sRule",
         "getDate": "\\d{4}\\-\\d{2}\\-\\d{2}",
 
-        "searchPaycode" : "On\\sCall|ABS\\sAbsence|Absence|Unexcused|LOWV\\s-\\sUnPaid|LOW\\sVoluntary|Excused\\sAbsence|LOWWI\\s\\-\\sUnPd|Weekender\\sLOW|FTC|LTCL\\sLate\\sCall|NCNS\\sNo\\sCall\\sNo|Show",
+        "searchPaycode" : "On\\sCall|ABS\\sAbsence|Absence|Unexcused|LOWV\\s-\\sUnPaid|LOW\\sVoluntary|Excused\\sAbsence|LOWWI\\s\\-\\sUnPd|Weekender\\sLOW|FTC|LTCL\\sLate\\sCall|NCNS\\sNo\\sCall\\sNo|Show|Not\\sTo\\sBe\\sSched|RNTBS-Request|LOWI\\s-\\sUnpaid|LOW\\sInvoluntary",
 
         "getInhour" : "\\d{1,2}:\\d{2}\\s(AM|PM)",
 
@@ -111,6 +118,7 @@
         "getGL" : "\\:\\d{4}\\-\\d{4}\\-\\d{4,5}",
 
         "getComment" : "^[^:\n]*\/[^:\n]*|^RN|^CN|\\d{4}\\-\\d{4}\\-\\d{4,5}",
+        "getComment2" : "^[^:\n]*\/[^:\n]*|^RN|^CN|\\d{4}\\-\\d{4}\\-\\d{4,5}|([A-Z0-9]+),(.*),(.*),(.*)(,(.*),)?([A-Za-z0-9]+)|^(?!.*\\bCOMMON\\b)\\w+(\\s)?\\-(\\s)?\\w+(\\s\\w+)?|^(?!.*\\bCondensed\\b)\\w+\\s\\w+\\s\\w+\\s\\w+",
 
         "breakLoop" : "Labor\\sSummary",
         "startPage" : "Condensed\\sEmployee\\sTime\\sDetail",
@@ -148,7 +156,7 @@
         "getName": "(?! Employee:)(\\w+,.?\\s\\w+(\\s\\w+)?)|(\\w+-)?(\\w+,)|(\\w+-)|\\b(\\w+)(?=ID:)",
         
         "searchPrimeryJob": "Primary\\sLabor\\sCategory",
-        "GetPrimary":"(?:\\w+\/\\w+\/\\w+\/\\w+)((\\s|\\-)\\w+)?(\\s\\w+)?(\\s)?(?:\\w+\/)+\\w+",
+        "GetPrimary":"(?:[A-Z]+\/\\w+\/\\w+\/\\w+)((\\s|\\-)\\w+)?(\\s\\w+)?(\\s)?(?:\\w+\/)+\\w+",
 
         "searchDate" : "Work\\sRule",
         "getDate": "\\d{1,2}\/\\d{1,2}\/\\d{2}",
@@ -160,9 +168,11 @@
 
         "getHours" : "\\d{1,2}\\.\\d{2}",
 
-        "searchPaycode": "(?<!\\S)\\w+(\\s\\$\\d{1,2})?(\\s\\w+)?(?!\\S)|CALL|OR-HRT|ORIENT-DAY|ORIENT|WEDAY|MTG-DAY|Other(\\$)?",
+        "searchPaycode": "(?!Long|Shift|Out)(?<!\\S)\\w+(\\s\\$\\d{1,2})?(\\s\\w+)?(?!\\S)|CALL|OR-HRT|ORIENT-DAY|ORIENT|WEDAY|MTG-DAY|Other(\\$)?|EDUC-DAY",
 
         "getcomment" : "(.+)(?=[A-Za-z])\\w",
+
+        "getcomment2" : "\\d{1,2}\/\\d{1,2}\/\\d{2}\\s\\s\\d{1,2}:\\d{2}[AP]M|\\d{1,2}:\\d{2}[AP]M|\\d{1,2}\/\\d{1,2}\/\\d{2}|CALL|OR-HRT|ORIENT-DAY|ORIENT|WEDAY|MTG-DAY|Other(\\$)|EDUC-DAY|CHARGE|PRECEPTOR|PTO",
 
         "output_file":"C:/dist/output/"
 
@@ -180,12 +190,16 @@
 
         "getHours" : "\\d{1,2}\\.\\d{2}",
 
-        "searchPayType" : "Work|Lunch|Unpaid\\sTime\\sOff",
+        "searchPayType" : "Work|Lunch|Unpaid\\sTime\\sOff|Oncall",
 
         "searchGL" : "Class",
         "getGL": "\\d+",
 
-        "output_file":"C:/dist/output/"
+        "output_file":"C:/dist/output/",
+
+        "searchPayAdjs" : "Pay\\sAdjustments",
+
+        "searchNxtNurse" : "Ozarks\\sMedical\\sCenter"
     }
 
 }

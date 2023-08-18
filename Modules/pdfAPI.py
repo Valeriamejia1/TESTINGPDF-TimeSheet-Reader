@@ -312,7 +312,7 @@ def main(response, file, reportType, delete_sched):
                                 else:
                                     flag= "GetHours"
 
-                        elif re.search(regexlist[reportType]["GethPayCodeRow"], str(value)) and (flag == "GetPaycodeAux" and flagPaycodesAux==True): #valid if exit another paycode in the next iteration
+                        elif re.search(regexlist[reportType]["KeyPaycode"], str(value)) and (flag == "GetPaycodeAux" and flagPaycodesAux==True): #valid if exit another paycode in the next iteration
                             if re.search(regexlist[reportType]["GethPayCodeRow"], str(value)):
                                 payCodeAux= re.search(regexlist[reportType]["GethPayCodeRow"], str(value))
                                 payCode =payCodeAux.group(0)
@@ -320,7 +320,7 @@ def main(response, file, reportType, delete_sched):
                             else:
                                 flag = "SearchPayCode"
 
-                        elif re.search(regexlist[reportType]["GethPayCodeRow"], str(value)) and flag == "GetPayCodeAux" and flag4 == "nextpaycoderow": #valid if exit another paycode in the next Cell
+                        elif re.search(regexlist[reportType]["KeyPaycode"], str(value)) and flag == "GetPayCodeAux" and flag4 == "nextpaycoderow": #valid if exit another paycode in the next Cell
                             if re.search(regexlist[reportType]["GethPayCodeRow"], str(value)):
                                 payCodeAux= re.search(regexlist[reportType]["GethPayCodeRow"], str(value))
                                 payCode =payCodeAux.group(0)
@@ -333,6 +333,7 @@ def main(response, file, reportType, delete_sched):
                                 paycodeAux= str(value)
                                 flag = "otherHoursOut"
                                 flag2 = "column"
+                                flagPaycodesAux = False
                                 paycodeAux1 = paycodeAux.split()  #divide words if they have more than one paycode in the same iteration
                                 if len(paycodeAux1) > 1:
                                     for paycodeAux3 in paycodeAux1:
@@ -361,6 +362,7 @@ def main(response, file, reportType, delete_sched):
                             hour = ""
                             flag= "GetPaycodeAux"
                             flag4= "nextpaycoderow"
+
 
                         elif (re.search(regexlist[reportType]["searchDate"], str(value))) and (flag == "GetPaycodeAux"): #obtain next date
                             flagPaycodesAux=False
@@ -419,6 +421,7 @@ def main(response, file, reportType, delete_sched):
                             flag2 = ""
                             flag3 = ""
                             DepAux = False
+                            flagPaycodesAux = False
                             if re.search(regexlist[reportType]["serchTimeCardReport"], str(value)):
                                 flag= "Code"
                             else:

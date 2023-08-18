@@ -38,7 +38,7 @@ def main(response, file, reportType):
     currentTime = UKGKronos.date_time()
     path = regexlist[reportType]["output_file"] + reportType + " output " + currentTime + ".xlsx"
     
-    #desired_pages = list(range(298,303))  # Desired pages (range)
+    #desired_pages = list(range(139,141))  # Desired pages (range)
     global name,PrimaryJob,date,inHour,hours,OutHour,paycode,comment
     flag = "Emp"
     FlagExtraName= False
@@ -107,13 +107,14 @@ def main(response, file, reportType):
                             if date !="" :  # If 'date' is not empty, and there's data to write, call 'writeDF' function.
                                 if FlagExtraWrite==True:
                                     writeDF(name,PrimaryJob, date, paycode, inHour,OutHour,hours,comment)
+                                    
                             date=UKGKronos.getDate(line,reportType)  # Get the 'date' using 'UKGKronos.getDate()'.
                             #print(date)
                             paycode=""
                             hours=""
                             inHour=""
                             OutHour=""
-
+                            comment=""
                             # Set flags for further processing.
                             FlagExtraWrite=True
                             FlagComments=False
@@ -151,7 +152,7 @@ def main(response, file, reportType):
                                 FlagComments = False
                             # Set 'flag' to "GetDateorComment" and reset 'comment'.
                             flag = "GetDateorComment" 
-                            comment=""     
+                            #comment=""     
                         
                         # Check if the pattern specified is found in the line and if either 'flag' is "Getname" or 'FlagExtraName' is True.
                         elif re.search(regexlist[reportType]["getName"], str(line)) and (flag == "Getname" or FlagExtraName == True) :          #Obtain the name 
@@ -181,6 +182,7 @@ def main(response, file, reportType):
                             # Obtain the primary job using 'UKGKronos.getPrimaryJob()' and update 'PrimaryJob'.
                             PrimaryJob= UKGKronos.getPrimaryJob(line,reportType)
                             #print (PrimaryJob)
+                            PrimaryJob2 = PrimaryJob
                             flag = "SearchDate"   # Update 'flag' to "SearchDate".
 
                         # Check if the pattern specified is found in the line and if 'flag' is "SearchDate".
@@ -195,10 +197,12 @@ def main(response, file, reportType):
                                     writeDF(name,PrimaryJob, date, paycode, inHour,OutHour,hours,comment)
                             date=UKGKronos.getDate(line,reportType) # Get the 'date' using 'UKGKronos.getDate()'.
                             #print(date)
+                            PrimaryJob = PrimaryJob2
                             paycode=""
                             hours=""
                             inHour=""
                             OutHour=""
+                            comment=""
                             # Set/reset flags for further processing.
                             FlagExtraWrite=True
                             FlagComments=False
@@ -214,6 +218,12 @@ def main(response, file, reportType):
                                 #print(inHour)
                                 flagExtraPayCode=False
                                 FlagComments= True
+                            
+                            if re.search(regexlist[reportType]["getcomment"], str (line)):
+                                 comment=UKGKronos.getComments(line,reportType,comment)
+                                 comment = re.sub(regexlist[reportType]["getcomment2"], "", comment)      
+
+
                             # Check for 'getOuthour' pattern, if found, get the 'OutHour' and set corresponding flags.
                             if re.search(regexlist[reportType]["getInhour"], str (line)):
                                 OutHour=UKGKronos.getOutHour(line, reportType, date)
@@ -233,10 +243,10 @@ def main(response, file, reportType):
                                     flagExtraHours = False
                             else: 
                                 flagExtraHours = True 
-                                FlagComments = False
+                                #FlagComments = False
                             # Update 'flag' to "GetDateorComment" and reset 'comment'.
                             flag = "GetDateorComment" 
-                            comment=""  
+                            #comment=""  
               
                         # Check if the pattern specified is found in the line, and if 'flagExtraPayCode' is True.
                         elif re.search(regexlist[reportType]["searchPaycode"], str(line)) and flagExtraPayCode== True:
@@ -289,19 +299,22 @@ def main(response, file, reportType):
                         
                         # Check if the pattern specified is found in the line, and if both 'FlagCommentsorDate' and 'flag' are True and "ExtraDate" respectively.
                         elif re.search(regexlist[reportType]["getcomment"], str (line)) and (FlagCommentsorDate==True and flag == "ExtraDate"):
-                            
                             # Get the comments using 'UKGKronos.getComments()' and update 'comment'.
                             comment=UKGKronos.getComments(line,reportType,comment)
-
+                            if re.search(regexlist[reportType]["GetPrimary"], str(comment)):
+                                PrimaryJob= UKGKronos.getPrimaryJob(comment,reportType)
+                                
                             # Update 'flag' to "GetDateorComment" and set 'FlagComments' to True.
                             flag = "GetDateorComment"
                             FlagComments = True
+
 
                         # Check if the pattern specified is found in the line, and if 'flagExtraOutHours' is True.
                         elif re.search(regexlist[reportType]["getInhour"], str (line)) and flagExtraOutHours == True:
 
                             # Get the 'OutHour' using 'UKGKronos.getInHour()' and update 'OutHour'.
                             OutHour=UKGKronos.getInHour(line, reportType, date)
+                            FlagComments = True
 
                             # Check for 'getHours' pattern, if found, get the 'hours' and reset 'flagExtraHours'.
                             if re.search(regexlist[reportType]["getHours"], str(line)): #Search Hours
@@ -314,10 +327,11 @@ def main(response, file, reportType):
 
                         # Check if the pattern specified is found in the line and if 'flagExtraHours' is True.
                         elif re.search(regexlist[reportType]["getHours"], str(line)) and flagExtraHours == True:
-
+                            if re.search(regexlist[reportType]["getcomment"], str (line)):
+                                comment=UKGKronos.getComments(line,reportType,comment)
                             # Get the 'hours' using 'UKGKronos.getHours()' and update 'hours'.
                             hours = UKGKronos.getHours(line, reportType)
-
+                            
                             # Check if 'hours' is greater than or equal to 25.00, reset 'hours'.
                             if float(hours) >= 25.00:
                                 hours = ""
@@ -329,7 +343,10 @@ def main(response, file, reportType):
                         # Check if the pattern specified is found in the line and if both 'FlagComments' and 'flag' are True and "GetDateorComment" respectively.
                         elif re.search(regexlist[reportType]["getcomment"], str (line)) and (FlagComments==True and flag == "GetDateorComment") :
                             # Get the comments using 'UKGKronos.getComments()' and update 'comment'.
-                            comment=UKGKronos.getComments(line,reportType,comment)            
+                            comment=UKGKronos.getComments(line,reportType,comment)   
+                            if re.search(regexlist[reportType]["GetPrimary"], str(comment)):
+                                PrimaryJob= UKGKronos.getPrimaryJob(comment,reportType)      
+                            
 
                         # Check if the pattern specified is found in the line and if 'flag' is "StartPage".
                         elif re.search(regexlist[reportType]["startPage"], str(line)) and flag == "StartPage": #when start to search a new nurse 

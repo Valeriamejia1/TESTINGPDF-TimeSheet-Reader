@@ -298,6 +298,8 @@ def main(response, file, reportType):
                         else:    
                             flag= "DateAuxOut"  
                                                                                    
+                    elif re.search(regexlist[reportType]["searchExpData"],str(value)) and (flagOutOux == "OutAux"):   
+                        flagOutOux = "False"                                                                    #Ignore the word "Data", Leaving the "OutOux" flag set to "false".
 
                     elif re.search(regexlist[reportType]["searchSepTimeOut"], str(value)) and ( flag== "DateAuxOut" or flagOutOux== "OutAux"):
                         timeOutAux = re.search(regexlist[reportType]["searchSepTimeOut"], str(value)) #obtain timeout

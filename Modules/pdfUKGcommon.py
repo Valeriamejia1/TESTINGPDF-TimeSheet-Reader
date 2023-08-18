@@ -41,7 +41,7 @@ class pdfUKGcommon:
         currentTime= currentTimeAux.replace(":", "")
         path = regexlist[reportType]["output_file"] + reportType +" output " + currentTime + ".xlsx"
 
-        #desired_pages = list(range(13,16))  # Desired pages (range)
+        #desired_pages = list(range(91,93))  # Desired pages (range)
 
         primaryJob = ""
         flag = "Emp"
@@ -71,7 +71,7 @@ class pdfUKGcommon:
                                 flag = "searchDateORprimaryJob"
                                 flagGL = True
 
-                            elif re.search(regexlist[reportType]["getComment"], str(line)) and "searchDateORprimaryJob" and flagGL == True:  #Obtain the primary job 
+                            elif re.search(regexlist[reportType]["getPrimaryJob"], str(line)) and "searchDateORprimaryJob" and flagGL == True:  #Obtain the primary job 
                                 primaryJob = logUKGcommon.getPrimaryJob(line, reportType, primaryJob)
                                 #flag= "searchDateORprimaryJob"
 
@@ -143,14 +143,14 @@ class pdfUKGcommon:
                                     pdfUKGcommon.writeDF(nurse, date, paycode, inHour,hours, comment, primaryJob)       #call the fuction to write the information 
                                     flagComment = True
 
-                            elif re.search(regexlist[reportType]["getComment"], str(line)) and (flag =="date" or flag == "inHourORdate" or flag == "HoursORdate" or flag == "PaycodeORdateORinHour") and flagComment == True: #This statement is used to get the comments
+                            elif re.search(regexlist[reportType]["getComment2"], str(line)) and (flag =="date" or flag == "inHourORdate" or flag == "HoursORdate" or flag == "PaycodeORdateORinHour") and flagComment == True: #This statement is used to get the comments
                                 if (flag == "inHourORdate" or flag== "HoursORdate" or flag == "PaycodeORdateORinHour"):
                                     pdfUKGcommon.writeDF(nurse, date, paycode, inHour,hours, comment, primaryJob)
                                     flagExtra = False
                                     flag = "date"
-                                comment= logUKGcommon.getComments(line, comment)                                                         #Obtain the comment 
+                                comment= logUKGcommon.getComments(line, comment, reportType)                                                         #Obtain the comment 
                                 size= (len(df.index))-1                                                                      #Get the dataframe last row number, to override the comments
-                                df.at[size, 'Comments']= comment
+                                df.at[size, 'Comments']= comment  
                                 
 
                             elif re.search(regexlist[reportType]["searchGL"], str(line)) and (flag =="date" or flag == "inHourORdate" or flag == "HoursORdate" or flag == "PaycodeORdateORinHour"):  #Search with keyword the GL

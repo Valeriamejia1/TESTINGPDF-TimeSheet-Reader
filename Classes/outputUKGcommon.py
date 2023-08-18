@@ -55,11 +55,15 @@ class logUKGcommon:
         hours = hoursAux.group(0) #Get only the needed value from the match
         return hours
     
-    def getComments(line, comment):
-        commentAux = re.sub(r'\sCC:$', "", line)  #remove CC: from the variable line
-        if re.search(r'\s', commentAux): #search is they have space blanks
+    def getComments(line, comment, reportType):
+        commentAux = line
+        if re.search(r'\d{4}\-\d{4}\-\d{4,5}', line):
+            commentAux = re.sub(r'\sCC:$', "", line)  #remove CC: from the variable line
+        if re.search(r'^[^:\n]*\/[^:\n]*|^RN|^CN', line):
             commentAux = re.sub(r'\s', "", commentAux) #remove space blanks
-        comment= comment + commentAux  #concatenate
+            comment= comment + commentAux  #concatenate
+        else: 
+            comment= comment + " | " +commentAux  #concatenate
         return comment
 
     def getGLword(glWordAux):
@@ -74,7 +78,7 @@ class logUKGcommon:
         return codeGL
     
     def getPrimaryJob(line, reportType, primaryJob):
-        primaryJobAux = re.search(regexlist[reportType]["getComment"], str(line)) #Search a match on the value by using a regex to get the primary job
+        primaryJobAux = re.search(regexlist[reportType]["getPrimaryJob"], str(line)) #Search a match on the value by using a regex to get the primary job
         primaryJobAux2 =primaryJobAux.group(0) #Get only the needed value from the match
         if re.search(r'(\d{1,2}\/\d{1,2}\/\d{2})\s+(.*)', primaryJobAux2): #Search if have a date or more information in the variable witch is not needed
             primaryJobAux2 = re.sub(r'(\d{1,2}\/\d{1,2}\/\d{2})\s+(.*)', "", primaryJobAux2) #remove this information
@@ -86,17 +90,25 @@ class logUKGcommon:
     def getComparationGl(self):
         #Filter by nurse
         dfNurse = self.dataframe[self.dataframe['NAME'] == self.nurse]
+        # Iterate over unique dates in the nurse's DataFrame
         for date in dfNurse['DATE'].unique():
-            #Filter by date
+        # Filter the nurse's DataFrame for the current date
             dfDate = dfNurse[dfNurse['DATE'] == date]
+            # Iterate over rows in the filtered DataFrame for the current date
             for index, row in dfDate.iterrows():
+                # Extract 'Comments' and 'PrimaryJob' from the current row
                 comment = row['Comments']
                 primaryJob = row['PrimaryJob']
+                
+                # Initialize code variables
                 self.codeGL = ""
                 self.codeGLAux = ""
+                
+                # Check if 'Comments' is empty
                 if comment.strip() == '':
-                    #If the comment is empty, use primary job
+                    # If 'PrimaryJob' is not empty, try to find a code
                     if primaryJob.strip() != "":
+                        # Iterate through predefined words and codes
                         for i, glWord in enumerate(self.arrayGLword):
                             if primaryJob.strip() == glWord:
                                 self.codeGL = self.arrayCodeGL[i]
@@ -104,31 +116,48 @@ class logUKGcommon:
                     else:
                         self.codeGL = ''
                 else:
-                    if re.search(r'\d{4}\-\d{4}\-\d{4,5}',comment):
-                        comment = re.search(r'\d{4}\-\d{4}\-\d{4,5}',comment) 
-                        self.codeGL=comment.group(0)
+                    # Check for a pattern of digits separated by hyphens in 'Comments'
+                    if re.search(r'\d{4}\-\d{4}\-\d{4,5}', comment):
+                        comment = re.search(r'\d{4}\-\d{4}\-\d{4,5}', comment) 
+                        self.codeGL = comment.group(0)
                     else:
-                        if re.search(r'^[^:\n]*\/[^:\n]*',comment):
-                            comment = re.search(r'^[^:\n]*\/[^:\n]*',comment) 
-                            comment=comment.group(0)
-                    #Search the corresponding code in the arrayGLword
-                        for i, glWord in enumerate(self.arrayGLword):
-                            if comment.strip() == glWord:
-                                self.codeGL = self.arrayCodeGL[i]
-                                break
+                        # Check for a specific pattern in 'Comments'
+                        if re.search(r'[^:\n]*\/(?:[^:\n]*\/)*(?=[^:\n]*)\w{2}', comment):
+                            comment = re.search(r'[^:\n]*\/(?:[^:\n]*\/)*(?=[^:\n]*)\w{2}', comment) 
+                            comment = comment.group(0)
+                            # Search for a matching code in the predefined words and codes
+                            for i, glWord in enumerate(self.arrayGLword):
+                                if comment.strip() == glWord:
+                                    self.codeGL = self.arrayCodeGL[i]
+                                    break
+                                else:
+                                    # If no match is found, assign an empty code
+                                    self.codeGL = ''
                         else:
-                            #If no match is found, assign empty
-                            self.codeGL = ''
-                #Assign code in the GL column
+                            if primaryJob.strip() != "":
+                            # Iterate through predefined words and codes
+                                for i, glWord in enumerate(self.arrayGLword):
+                                    if primaryJob.strip() == glWord:
+                                        self.codeGL = self.arrayCodeGL[i]
+                                        break
+                            else:
+                                self.codeGL = ''
+                
+                # Search for a matching code for 'PrimaryJob' and assign it to self.codeGLAux
                 for i, glWord in enumerate(self.arrayGLword):
                     if primaryJob.strip() == glWord:
                         self.codeGLAux = self.arrayCodeGL[i]
                         break
+                
+                # Update the 'GLCODE' and 'PrimaryJob' columns in the DataFrame
                 self.dataframe.loc[index, 'GLCODE'] = self.codeGL
                 self.dataframe.loc[index, 'PrimaryJob'] = primaryJob + "|" + self.codeGLAux
 
+        # Clear arrays for codes and words
         self.arrayCodeGL.clear()
         self.arrayGLword.clear()
 
+        # Return the updated DataFrame
         return self.dataframe
+
         
