@@ -7,6 +7,9 @@ files = ["PDF/Haynie, Nathan.pdf", "PDF/Hobbs, Brandy.pdf"]
 
 reportType = "Paylocity"
 
+# Directorio de salida personalizado en tu repositorio
+output_directory = "Output"
+
 # Iterar sobre la lista de archivos y llamar a la función main para cada archivo
 for file in files:
     result = main(response, file, reportType)
