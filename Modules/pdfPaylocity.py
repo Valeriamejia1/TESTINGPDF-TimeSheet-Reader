@@ -35,7 +35,7 @@ def main(response, file, reportType):
 
     currentTime = outputPaylocity.date_time()
     #path = regexlist[reportType]["output_file"] + reportType + " output " + currentTime + ".xlsx"
-    path = "output/" + reportType + " output " + currentTime + ".xlsx"
+    path = "Output/" + reportType + " Output " + currentTime + ".xlsx"
 
 
     global df, inHour,outHour, hour, paytype, count, countAdjs
