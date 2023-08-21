@@ -170,8 +170,7 @@ def main(response, file, reportType):
                         
     writer = pd.ExcelWriter(path)
     #line to save the file with the new name
-    df.to_excel(writer, sheet_name='Sheet1', index=None, header=True)
-    #df.to_excel(writer, sheet_name='Sheet1',index = None, header=True)  # Save df in a sheet named 'RawData' 
+    df.to_excel(writer, sheet_name='Sheet1',index = None, header=True)  # Save df in a sheet named 'RawData' 
     writer.save()  # Save the changes to the Excel file
 
     df1= df.copy(deep=True)
