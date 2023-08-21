@@ -4,6 +4,7 @@ import pandas as pd
 import re
 import warnings
 from Classes.outputUKGSimplified import UKGSimplified
+import os
 
 #Remove warnings from the console logs
 warnings.simplefilter(action='ignore', category=FutureWarning)   
@@ -19,14 +20,19 @@ def writeDF(name, gl, paycode, date,hours,InHour): #write data in the excel
         info = {'NAME': name, 'DATE': date, 'GLCODE' : gl, 'PAYCODE' : paycode,'HOURS':hours,'STARTDTM' : InHour }
         df= df.append(info, ignore_index= True)
 
-def main(response, file, reportType):
+def main(response, file, reportType, from_convert_pdf_UKGS=False):
     """
     Main code for PDF to Excel. Receives response whether or no convert hours and file to process.
     """
     regexlist = UKGSimplified.readJsonRegex()
 
     currentTime = UKGSimplified.date_time()
-    path = regexlist[reportType]["output_file"] + reportType + " output " + currentTime + ".xlsx"
+    pdf_file_name = os.path.splitext(os.path.basename(file))[0]
+
+    if from_convert_pdf_UKGS:
+        path = "Output/OUTPUT UKGSimplified/" + pdf_file_name + ".xlsx"
+    else:
+        path = regexlist[reportType]["output_file"] + reportType + " output " + currentTime + ".xlsx"
     
     #desired_pages = list(range(5,8))  # Desired pages (range)
 

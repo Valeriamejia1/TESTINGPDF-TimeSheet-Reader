@@ -4,6 +4,7 @@ import pandas as pd
 import re  # regex
 from Classes.outputUKGcommon import logUKGcommon
 from datetime import datetime
+import os
 
 class pdfUKGcommon:
     
@@ -27,10 +28,18 @@ class pdfUKGcommon:
         info = {'NAME': nurse, 'DATE': date, 'PAYCODE' : paycode, 'STARTDTM' : inHour, 'HOURS': hours, 'Comments': comment, 'PrimaryJob' : primaryJob}
         df= df.append(info, ignore_index= True)
         
-    def main(response, file, reportType):
+    def main(response, file, reportType, from_convert_pdf_UKGC=False):
         
         #Read a json file with the regex values and import them to a dictionary
         regexlist= logUKGcommon.readJsonRegex()
+
+        pdf_file_name = os.path.splitext(os.path.basename(file))[0]
+
+        if from_convert_pdf_UKGC:
+            path = "Output/OUTPUT UKGCommon/" + pdf_file_name + ".xlsx"
+        else:
+            path = regexlist[reportType]["output_file"] + reportType + " output " + currentTime + ".xlsx"
+
         global nurse, date, paycode, inHour, hours, flag, paycode2, comment, primaryJob, df
 
         arrayGLword =[]

@@ -32,15 +32,15 @@ def clear(): # Clear variables
 
 # Resto del código
 
-def main(response, file, reportType, from_convert_pdf=False):  # Agregamos el argumento from_convert_pdf
+def main(response, file, reportType, from_convert_pdf_Paylocity=False):  # Agregamos el argumento from_convert_pdf_Paylocity
     regexlist = outputPaylocity.readJsonRegex()
 
     currentTime = outputPaylocity.date_time()
 
     pdf_file_name = os.path.splitext(os.path.basename(file))[0]
 
-    if from_convert_pdf:
-        path = "Output/" + pdf_file_name + ".xlsx"
+    if from_convert_pdf_Paylocity:
+        path = "Output/OUTPUT Paylocity/" + pdf_file_name + ".xlsx"
     else:
         path = regexlist[reportType]["output_file"] + reportType + " output " + currentTime + ".xlsx"
 

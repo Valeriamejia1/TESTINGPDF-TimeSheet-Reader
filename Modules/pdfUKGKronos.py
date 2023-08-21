@@ -4,6 +4,7 @@ import pandas as pd
 import re
 import warnings
 from Classes.outputUKGKronos import UKGKronos
+import os
 
 #Remove warnings from the console logs
 warnings.simplefilter(action='ignore', category=FutureWarning)   
@@ -29,14 +30,19 @@ def writeDF(name,PrimaryJob, date, paycode, inHour,OutHour,hours,comment): #writ
         info = {'NAME': name, 'DATE': date, 'PRIMARY JOB': PrimaryJob, 'PAYCODE' : paycode,'STARTDTM' : inHour,'ENDDTM' :OutHour ,'HOURS':hours,'Comments': comment }
         df= df.append(info, ignore_index= True)
 
-def main(response, file, reportType):
+def main(response, file, reportType, from_convert_pdf_UKGK=False):
     """
     Main code for PDF to Excel. Receives response whether or no convert hours and file to process.
     """
     regexlist = UKGKronos.readJsonRegex()
 
     currentTime = UKGKronos.date_time()
-    path = regexlist[reportType]["output_file"] + reportType + " output " + currentTime + ".xlsx"
+    pdf_file_name = os.path.splitext(os.path.basename(file))[0]
+
+    if from_convert_pdf_UKGK:
+        path = "Output/OUTPUT UKGKronos/" + pdf_file_name + ".xlsx"
+    else:
+        path = regexlist[reportType]["output_file"] + reportType + " output " + currentTime + ".xlsx"
     
     #desired_pages = list(range(139,141))  # Desired pages (range)
     global name,PrimaryJob,date,inHour,hours,OutHour,paycode,comment
