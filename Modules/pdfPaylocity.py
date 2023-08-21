@@ -35,8 +35,9 @@ def main(response, file, reportType):
     regexlist = outputPaylocity.readJsonRegex()
 
     currentTime = outputPaylocity.date_time()
+    #Line to run the script for users
     #path = regexlist[reportType]["output_file"] + reportType + " output " + currentTime + ".xlsx"
-    #path = "Output/" + reportType + " Output " + currentTime + ".xlsx"
+
     #Line to change file name
     pdf_file_name = os.path.splitext(os.path.basename(file))[0]
     # Modify the path variable to use the base name of the PDF file for the name of the Excel file.
