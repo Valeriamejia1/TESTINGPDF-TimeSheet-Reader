@@ -5,6 +5,7 @@ import re
 import warnings
 import numpy as np
 from Classes.outputPaylocity import outputPaylocity
+import os
 
 #Remove warnings from the console logs
 warnings.simplefilter(action='ignore', category=FutureWarning)   
@@ -35,7 +36,11 @@ def main(response, file, reportType):
 
     currentTime = outputPaylocity.date_time()
     #path = regexlist[reportType]["output_file"] + reportType + " output " + currentTime + ".xlsx"
-    path = "Output/" + reportType + " Output " + currentTime + ".xlsx"
+    #path = "Output/" + reportType + " Output " + currentTime + ".xlsx"
+    #Line to change file name
+    pdf_file_name = os.path.splitext(os.path.basename(file))[0]
+    # Modify the path variable to use the base name of the PDF file for the name of the Excel file.
+    path = "Output/" + pdf_file_name + currentTime + ".xlsx"
 
 
     global df, inHour,outHour, hour, paytype, count, countAdjs
@@ -163,7 +168,9 @@ def main(response, file, reportType):
                                      
                         
     writer = pd.ExcelWriter(path)
-    df.to_excel(writer, sheet_name='Sheet1',index = None, header=True)  # Save df in a sheet named 'RawData' 
+    #line to save the file with the new name
+    df.to_excel(writer, sheet_name='Sheet1', index=None, header=True)
+    #df.to_excel(writer, sheet_name='Sheet1',index = None, header=True)  # Save df in a sheet named 'RawData' 
     writer.save()  # Save the changes to the Excel file
 
     df1= df.copy(deep=True)
