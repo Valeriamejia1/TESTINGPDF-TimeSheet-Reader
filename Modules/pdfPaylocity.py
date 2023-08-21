@@ -30,18 +30,19 @@ def clear(): # Clear variables
     count = 0
     countAdjs = 0
 
-def main(response, file, reportType):
-        
+# Resto del código
+
+def main(response, file, reportType, from_convert_pdf=False):  # Agregamos el argumento from_convert_pdf
     regexlist = outputPaylocity.readJsonRegex()
 
     currentTime = outputPaylocity.date_time()
-    #Line to run the script for users
-    #path = regexlist[reportType]["output_file"] + reportType + " output " + currentTime + ".xlsx"
 
-    #Line to change file name
     pdf_file_name = os.path.splitext(os.path.basename(file))[0]
-    # Modify the path variable to use the base name of the PDF file for the name of the Excel file.
-    path = "Output/" + pdf_file_name + currentTime + ".xlsx"
+
+    if from_convert_pdf:
+        path = "Output/" + pdf_file_name + ".xlsx"
+    else:
+        path = regexlist[reportType]["output_file"] + reportType + " output " + currentTime + ".xlsx"
 
 
     global df, inHour,outHour, hour, paytype, count, countAdjs
