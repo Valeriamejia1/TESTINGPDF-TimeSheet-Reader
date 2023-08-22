@@ -195,9 +195,9 @@ def main(response, file, reportType, from_convert_pdf_Default= False):
     if from_convert_pdf_Default:
         
         if response == True:
-            path = "Output/OUTPUT Default/" + pdf_file_name + " minutes" + ".xlsx"
+            path = "QA\Output Files\OUTPUT Default/" + pdf_file_name + " minutes" + ".xlsx"
         else:
-            path = "Output/OUTPUT Default/" + pdf_file_name + ".xlsx"
+            path = "QA\Output Files\OUTPUT Default/" + pdf_file_name + ".xlsx"
     else:
         path = regexlist[reportType]["output_file"] + "output " + currentTime + ".xlsx"
     
