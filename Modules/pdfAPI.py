@@ -66,7 +66,20 @@ def main(response, file, reportType, delete_sched):
     current = datetime.now()
     currentTimeAux = str(current.strftime("%Y-%m-%d %H:%M:%S"))
     currentTime= currentTimeAux.replace(":", "")
-    path = regexlist[reportType]["output_file"] + reportType +" output " + currentTime + ".xlsx"
+
+    pdf_file_name = os.path.splitext(os.path.basename(file[0]))[0]
+
+    if response:
+        if delete_sched:
+            path = f"QA/Output Files/OUTPUT API/{pdf_file_name}.xlsx"
+        else:
+            path = f"QA/Output Files/OUTPUT API/{pdf_file_name} SCHED.xlsx"
+
+        print(f"El archivo de salida se guardó en: {path}")
+    else:
+        print("No se generó un archivo de salida debido a un fallo en la conversión.")
+
+
 
     for filenames in file:
 
@@ -449,3 +462,15 @@ def main(response, file, reportType, delete_sched):
         return False
     else:
         return True
+    
+    pdf_file_name = os.path.splitext(os.path.basename(file[0]))[0]
+
+    if response:
+        if delete_sched:
+            path = f"QA/Output Files/OUTPUT API/{pdf_file_name} SCHED.xlsx"
+        else:
+            path = f"QA/Output Files/OUTPUT API/{pdf_file_name}.xlsx"
+
+        print(f"El archivo de salida se guardó en: {path}")
+    else:
+        print("No se generó un archivo de salida debido a un fallo en la conversión.")
