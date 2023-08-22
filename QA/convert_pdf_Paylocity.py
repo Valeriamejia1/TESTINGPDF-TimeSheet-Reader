@@ -1,7 +1,16 @@
+import os
+import sys
+
+# Obtiene el directorio base del script actual (donde se encuentra QA)
+base_dir = os.path.dirname(os.path.abspath(__file__))
+# Agrega el directorio que contiene "Modules" al PATH
+sys.path.append(os.path.join(base_dir, ".."))  # ".." significa el directorio padre
+
+# Ahora podemos importar el módulo pdfAPI
 from Modules.pdfPaylocity import main
 
 # Lista de nombres de archivos PDF a convertir
-pdf_files = ["QA/Paylocity/Binder1.pdf", "QA/Paylocity/Master Timecard Detail-Josh Barker (7).pdf"]
+pdf_files = ["QA/PDF/Paylocity/Binder1.pdf", "QA/PDF/Paylocity/Master Timecard Detail-Josh Barker (7).pdf"]
 reportType = "Paylocity"
 
 for pdf_file in pdf_files:

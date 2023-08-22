@@ -1,7 +1,16 @@
-from Modules.pdfUKGsimplified import main
+import os
+import sys
+# Obtiene el directorio base del script actual (donde se encuentra QA)
+base_dir = os.path.dirname(os.path.abspath(__file__))
+# Agrega el directorio que contiene "Modules" al PATH
+sys.path.append(os.path.join(base_dir, ".."))  # ".." significa el directorio padre
 
+
+# Ahora podemos importar el módulo UKG Simplified
+
+from Modules.pdfUKGsimplified import main
 # Lista de nombres de archivos PDF a convertir
-pdf_files = ["QA/UKG_Simplified/Qualvis TimeSheets 2023-06-03.pdf", "QA/UKG_Simplified/TimeDetailsSorted_KEVCOL.pdf"] 
+pdf_files = ["QA/PDF/UKG_Simplified/Qualvis TimeSheets 2023-06-03.pdf", "QA/PDF/UKG_Simplified/TimeDetailsSorted_KEVCOL.pdf"]
 reportType = "UKG Simplified"
 
 for pdf_file in pdf_files:

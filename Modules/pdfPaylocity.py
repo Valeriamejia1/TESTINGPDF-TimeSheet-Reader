@@ -40,7 +40,7 @@ def main(response, file, reportType, from_convert_pdf_Paylocity=False):  # Agreg
     pdf_file_name = os.path.splitext(os.path.basename(file))[0]
 
     if from_convert_pdf_Paylocity:
-        path = "Output/OUTPUT Paylocity/" + pdf_file_name + ".xlsx"
+        path = "QA/Output Files/OUTPUT Paylocity/" + pdf_file_name + ".xlsx"
     else:
         path = regexlist[reportType]["output_file"] + reportType + " output " + currentTime + ".xlsx"
 

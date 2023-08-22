@@ -1,7 +1,16 @@
+import os
+import sys
+
+# Obtiene el directorio base del script actual (donde se encuentra QA)
+base_dir = os.path.dirname(os.path.abspath(__file__))
+# Agrega el directorio que contiene "Modules" al PATH
+sys.path.append(os.path.join(base_dir, ".."))  # ".." significa el directorio padre
+
+# Ahora podemos importar el módulo pdfAPI
 from Modules.pdfDefault import main
 
 # Lista de nombres de archivos PDF a convertir
-pdf_files = ["QA/Default/Ewing PPE 3.11.23.pdf", "QA/Default/Qualivis Kronos Time Detail Report.WE 03.04.2023.pdf"] 
+pdf_files = ["QA/PDF/Default/Ewing PPE 3.11.23.pdf", "QA/PDF/Default/Agency Timecards 3.12-3.25.pdf"] 
 reportType = "Default"
 
 for pdf_file in pdf_files:

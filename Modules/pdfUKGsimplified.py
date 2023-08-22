@@ -30,7 +30,7 @@ def main(response, file, reportType, from_convert_pdf_UKGS=False):
     pdf_file_name = os.path.splitext(os.path.basename(file))[0]
 
     if from_convert_pdf_UKGS:
-        path = "Output/OUTPUT UKGSimplified/" + pdf_file_name + ".xlsx"
+        path = "QA/Output Files/OUTPUT UKGSimplified/" + pdf_file_name + ".xlsx"
     else:
         path = regexlist[reportType]["output_file"] + reportType + " output " + currentTime + ".xlsx"
     
