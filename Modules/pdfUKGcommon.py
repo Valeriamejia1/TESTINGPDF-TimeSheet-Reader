@@ -32,14 +32,6 @@ class pdfUKGcommon:
         
         #Read a json file with the regex values and import them to a dictionary
         regexlist= logUKGcommon.readJsonRegex()
-
-        pdf_file_name = os.path.splitext(os.path.basename(file))[0]
-
-        if from_convert_pdf_UKGC:
-            path = "Output/OUTPUT UKGCommon/" + pdf_file_name + ".xlsx"
-        else:
-            path = regexlist[reportType]["output_file"] + reportType + " output " + currentTime + ".xlsx"
-
         global nurse, date, paycode, inHour, hours, flag, paycode2, comment, primaryJob, df
 
         arrayGLword =[]
@@ -48,7 +40,13 @@ class pdfUKGcommon:
         current = datetime.now()
         currentTimeAux = str(current.strftime("%Y-%m-%d %H:%M:%S"))
         currentTime= currentTimeAux.replace(":", "")
-        path = regexlist[reportType]["output_file"] + reportType +" output " + currentTime + ".xlsx"
+
+        pdf_file_name = os.path.splitext(os.path.basename(file))[0]
+
+        if from_convert_pdf_UKGC:
+            path = "Output/OUTPUT UKGCommon/" + pdf_file_name + ".xlsx"
+        else:
+            path = regexlist[reportType]["output_file"] + reportType +" output " + currentTime + ".xlsx"
 
         #desired_pages = list(range(91,93))  # Desired pages (range)
 
@@ -204,5 +202,4 @@ class pdfUKGcommon:
 
 
 
-    
     
