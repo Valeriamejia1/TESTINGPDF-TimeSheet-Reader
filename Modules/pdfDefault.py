@@ -8,6 +8,7 @@ from datetime import datetime
 from Classes.auditPDFdefault import pdftest
 import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
+import os
 
 def readJsonRegex():
     # read json file "Regex.json" that holds the regex that are required
@@ -177,7 +178,7 @@ col=["EMPLID","NAME","DATE","AGENCY","GLCODE","PAYCODE","STARTDTM","ENDDTM","HOU
 df= pd.DataFrame(columns=col)  #Create the empty dataframe
 
 
-def main(response, file, reportType):
+def main(response, file, reportType, from_convert_pdf_Default= False):
     """
     Main code for PDF to Excel. Receives response whether or no convert hours and file to process.
     """
@@ -188,7 +189,17 @@ def main(response, file, reportType):
     current = datetime.now()
     currentTimeAux = str(current.strftime("%Y-%m-%d %H:%M:%S"))
     currentTime= currentTimeAux.replace(":", "")
-    path = regexlist[reportType]["output_file"] + "output " + currentTime + ".xlsx"
+
+    pdf_file_name = os.path.splitext(os.path.basename(file))[0]
+
+    if from_convert_pdf_Default:
+        
+        if response == True:
+            path = "Output/OUTPUT Default/" + pdf_file_name + " minutes" + ".xlsx"
+        else:
+            path = "Output/OUTPUT Default/" + pdf_file_name + ".xlsx"
+    else:
+        path = regexlist[reportType]["output_file"] + "output " + currentTime + ".xlsx"
     
     #Read the PDF file and create a list of dataframes with the PDF pages
     table= tb.read_pdf(file, pages='all', stream= True, lattice=False, silent=False, guess=False, multiple_tables=True, pandas_options={'header': None}, java_options="-Dfile.encoding=UTF8")
