@@ -40,7 +40,6 @@ class pdfUKGcommon:
         current = datetime.now()
         currentTimeAux = str(current.strftime("%Y-%m-%d %H:%M:%S"))
         currentTime= currentTimeAux.replace(":", "")
-
         pdf_file_name = os.path.splitext(os.path.basename(file))[0]
 
         if from_convert_pdf_UKGC:
@@ -65,7 +64,7 @@ class pdfUKGcommon:
                 if page_num >= 0 and page_num < len(reader.pages):  # Check if the page number is within the valid range
                     page = reader.pages[page_num]  # Extract the text from the page
                     text = page.extract_text()
-                    lines = text.split('/n')    # Split the text into lines
+                    lines = text.split('\n')    # Split the text into lines
                     for line in lines:   # Iterate over the lines
                         if line.strip():  # Check if the line is not empty or composed only of whitespace
                             #print(line)
@@ -202,4 +201,5 @@ class pdfUKGcommon:
 
 
 
+    
     

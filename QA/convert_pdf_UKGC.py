@@ -9,7 +9,11 @@ sys.path.append(os.path.join(base_dir, ".."))  # ".." significa el directorio pa
 from Modules.pdfUKGcommon import pdfUKGcommon
 
 # Lista de nombres de archivos PDF a convertir
-pdf_files = ["QA/PDF/API/Dawson, Kathleen.pdf", "QA/PDF/API/Mattox, Kyle.pdf"]  # Reemplaza con las rutas correctas
+pdf_files = ["QA/PDF/UKG_Common/martin b.pdf", 
+             "QA/PDF/UKG_Common/Martin Holiday Shifts 7.3 to 7.5.23.pdf",
+             "QA/PDF/UKG_Common/Martin ppe 4.22.23.pdf",
+             "QA/PDF/UKG_Common/martin time a.pdf",
+             "QA/PDF/UKG_Common/UKG Common Empty.pdf"]  # Reemplaza con las rutas correctas
 reportType = "UKG Common"
 
 for pdf_file in pdf_files:

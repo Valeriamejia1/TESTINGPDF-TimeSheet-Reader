@@ -30,20 +30,17 @@ def clear(): # Clear variables
     count = 0
     countAdjs = 0
 
-# Resto del código
-
-def main(response, file, reportType, from_convert_pdf_Paylocity=False):  # Agregamos el argumento from_convert_pdf_Paylocity
+def main(response, file, reportType, from_convert_pdf_Paylocity=False):
+        
     regexlist = outputPaylocity.readJsonRegex()
 
     currentTime = outputPaylocity.date_time()
-
     pdf_file_name = os.path.splitext(os.path.basename(file))[0]
 
     if from_convert_pdf_Paylocity:
         path = "QA/Output Files/OUTPUT Paylocity/" + pdf_file_name + ".xlsx"
     else:
         path = regexlist[reportType]["output_file"] + reportType + " output " + currentTime + ".xlsx"
-
 
     global df, inHour,outHour, hour, paytype, count, countAdjs
     clear()
@@ -165,12 +162,11 @@ def main(response, file, reportType, from_convert_pdf_Paylocity=False):  # Agreg
                         
                         #Search Ozarks word
                         elif re.search(regexlist[reportType]["searchNxtNurse"], str(line)):
-                            flag= "GetNxtName"
+                            flag= ""
 
                                      
                         
     writer = pd.ExcelWriter(path)
-    #line to save the file with the new name
     df.to_excel(writer, sheet_name='Sheet1',index = None, header=True)  # Save df in a sheet named 'RawData' 
     writer.save()  # Save the changes to the Excel file
 

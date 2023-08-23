@@ -10,7 +10,9 @@ sys.path.append(os.path.join(base_dir, ".."))  # ".." significa el directorio pa
 
 from Modules.pdfUKGsimplified import main
 # Lista de nombres de archivos PDF a convertir
-pdf_files = ["QA/PDF/UKG_Simplified/Qualvis TimeSheets 2023-06-03.pdf", "QA/PDF/UKG_Simplified/TimeDetailsSorted_KEVCOL.pdf"]
+pdf_files = ["QA\PDF/UKG_Simplified/TimeDetailsSorted_KEVCOL.pdf", 
+             "QA/PDF/UKG_Simplified/Qualvis TimeSheets 2023-06-03.pdf",
+             "QA/PDF/UKG_Simplified/UKG Simplified Empty.pdf"]
 reportType = "UKG Simplified"
 
 for pdf_file in pdf_files:

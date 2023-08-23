@@ -178,7 +178,7 @@ col=["EMPLID","NAME","DATE","AGENCY","GLCODE","PAYCODE","STARTDTM","ENDDTM","HOU
 df= pd.DataFrame(columns=col)  #Create the empty dataframe
 
 
-def main(response, file, reportType, from_convert_pdf_Default= False):
+def main(response, file, reportType,  from_convert_pdf_Default= False):
     """
     Main code for PDF to Excel. Receives response whether or no convert hours and file to process.
     """
@@ -189,7 +189,6 @@ def main(response, file, reportType, from_convert_pdf_Default= False):
     current = datetime.now()
     currentTimeAux = str(current.strftime("%Y-%m-%d %H:%M:%S"))
     currentTime= currentTimeAux.replace(":", "")
-
     pdf_file_name = os.path.splitext(os.path.basename(file))[0]
 
     if from_convert_pdf_Default:

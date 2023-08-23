@@ -10,7 +10,8 @@ sys.path.append(os.path.join(base_dir, ".."))  # ".." significa el directorio pa
 from Modules.pdfPaylocity import main
 
 # Lista de nombres de archivos PDF a convertir
-pdf_files = ["QA/PDF/Paylocity/Binder1.pdf", "QA/PDF/Paylocity/Master Timecard Detail-Josh Barker (7).pdf"]
+pdf_files = ["QA/PDF/Paylocity/Binder1.pdf", 
+             "QA/PDF/Paylocity/Master Timecard Detail-Josh Barker.pdf"]
 reportType = "Paylocity"
 
 for pdf_file in pdf_files:

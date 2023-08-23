@@ -37,6 +37,7 @@ def main(response, file, reportType, from_convert_pdf_UKGK=False):
     regexlist = UKGKronos.readJsonRegex()
 
     currentTime = UKGKronos.date_time()
+    
     pdf_file_name = os.path.splitext(os.path.basename(file))[0]
 
     if from_convert_pdf_UKGK:

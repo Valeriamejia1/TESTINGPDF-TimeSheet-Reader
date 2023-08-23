@@ -57,7 +57,7 @@ col=["EMPLID","NAME","DATE","AGENCY","GLCODE","PAYCODE","SPECIAL CODE","STARTDTM
 df= pd.DataFrame(columns=col)  #Create the empty dataframe
 
 
-def main(response, file, reportType, delete_sched):
+def main(response, file, reportType, delete_sched, from_convert_pdf_API=False):
     """
     Main code for PDF to Excel. Receives response whether or no convert hours and file to process.
     """
@@ -66,20 +66,21 @@ def main(response, file, reportType, delete_sched):
     current = datetime.now()
     currentTimeAux = str(current.strftime("%Y-%m-%d %H:%M:%S"))
     currentTime= currentTimeAux.replace(":", "")
-
     pdf_file_name = os.path.splitext(os.path.basename(file[0]))[0]
 
-    if response:
-        if delete_sched:
-            path = f"QA/Output Files/OUTPUT API/{pdf_file_name}.xlsx"
+    if from_convert_pdf_API:
+
+        if response:
+            if delete_sched:
+                path = f"QA/Output Files/OUTPUT API/{pdf_file_name}.xlsx"
+            else:
+                path = f"QA/Output Files/OUTPUT API/{pdf_file_name} SCHED.xlsx"
+
+            print(f"El archivo de salida se guardó en: {path}")
         else:
-            path = f"QA/Output Files/OUTPUT API/{pdf_file_name} SCHED.xlsx"
-
-        print(f"El archivo de salida se guardó en: {path}")
+            print("No se generó un archivo de salida debido a un fallo en la conversión.")
     else:
-        print("No se generó un archivo de salida debido a un fallo en la conversión.")
-
-
+        path = regexlist[reportType]["output_file"] + reportType + " output " + currentTime + ".xlsx"
 
     for filenames in file:
 
@@ -462,15 +463,3 @@ def main(response, file, reportType, delete_sched):
         return False
     else:
         return True
-    
-    pdf_file_name = os.path.splitext(os.path.basename(file[0]))[0]
-
-    if response:
-        if delete_sched:
-            path = f"QA/Output Files/OUTPUT API/{pdf_file_name} SCHED.xlsx"
-        else:
-            path = f"QA/Output Files/OUTPUT API/{pdf_file_name}.xlsx"
-
-        print(f"El archivo de salida se guardó en: {path}")
-    else:
-        print("No se generó un archivo de salida debido a un fallo en la conversión.")
