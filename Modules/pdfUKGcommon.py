@@ -5,6 +5,10 @@ import re  # regex
 from Classes.outputUKGcommon import logUKGcommon
 from datetime import datetime
 import os
+import warnings
+
+#Remove warnings from the console logs
+warnings.simplefilter(action='ignore', category=FutureWarning) 
 
 class pdfUKGcommon:
     
