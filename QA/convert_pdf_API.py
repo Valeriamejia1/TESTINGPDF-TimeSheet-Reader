@@ -1,9 +1,6 @@
 import os
 import sys
-import warnings
 
-# Ignorar todas las advertencias de deprecación
-warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 
 # Obtiene el directorio base del script actual (donde se encuentra QA)
