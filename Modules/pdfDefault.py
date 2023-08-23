@@ -182,9 +182,7 @@ def main(response, file, reportType,  from_convert_pdf_Default= False):
     """
     Main code for PDF to Excel. Receives response whether or no convert hours and file to process.
     """
-
-    audit = pdftest(file, reportType, regexlist)
-    audit.audit_report()
+  
 
     current = datetime.now()
     currentTimeAux = str(current.strftime("%Y-%m-%d %H:%M:%S"))
@@ -199,6 +197,8 @@ def main(response, file, reportType,  from_convert_pdf_Default= False):
             path = "QA\Output Files\OUTPUT Default/" + pdf_file_name + ".xlsx"
     else:
         path = regexlist[reportType]["output_file"] + "output " + currentTime + ".xlsx"
+        audit = pdftest(file, reportType, regexlist)
+        audit.audit_report()
     
     #Read the PDF file and create a list of dataframes with the PDF pages
     table= tb.read_pdf(file, pages='all', stream= True, lattice=False, silent=False, guess=False, multiple_tables=True, pandas_options={'header': None}, java_options="-Dfile.encoding=UTF8")
