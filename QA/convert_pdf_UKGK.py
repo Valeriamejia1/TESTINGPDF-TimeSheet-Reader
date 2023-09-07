@@ -11,7 +11,8 @@ sys.path.append(os.path.join(base_dir, ".."))  # ".." significa el directorio pa
 from Modules.pdfUKGKronos import main
 
 # Lista de nombres de archivos PDF a convertir
-pdf_files = ["QA/PDF/UKG_Kronos/Qualivis Time report PPE 062423.pdf"] 
+pdf_files = ["QA/PDF/UKG_Kronos/Qualivis Time report PPE 062423.pdf",
+             "QA/PDF/UKG_Kronos/UKG Kronos empty.pdf"] 
 reportType = "UKG Kronos"
 
 for file in pdf_files:
