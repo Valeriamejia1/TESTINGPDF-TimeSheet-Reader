@@ -1,8 +1,11 @@
 import os
 import sys
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 8d90db5da17e7f09a23152fa5d260b559110e790
 # Obtiene el directorio base del script actual (donde se encuentra QA)
 base_dir = os.path.dirname(os.path.abspath(__file__))
 # Agrega el directorio que contiene "Modules" al PATH
@@ -14,12 +17,13 @@ from Modules.pdfAPI import main
 # Lista de nombres de archivos PDF a convertir
 pdf_files = ["QA/PDF/API/Dawson, Kathleen.pdf", 
              "QA/PDF/API/Delta Health 4.15.23.pdf", 
-             #"QA/PDF/API/Hannibal 4.15.23.pdf", 
+             "QA/PDF/API/Hannibal 4.15.23.pdf", 
              "QA/PDF/API/Mattox, Kyle.pdf", 
-             #"QA/PDF/API/TMMC W.E. 4.22.pdf",
+             "QA/PDF/API/TMMC W.E. 4.22.pdf",
              "QA/PDF/API/API Empty.pdf"]  
 
 reportType = "API Format"  # Reemplaza con el tipo de informe correcto
+<<<<<<< HEAD
 
 for pdf_file in pdf_files:
 
@@ -48,5 +52,20 @@ for pdf_file in pdf_files:
         print(f"La conversión del archivo {pdf_file} falló o no se encontraron datos.")
 
 
+=======
+delete_sched = True  # Cambia esto según tus necesidades
+
+for pdf_file in pdf_files:
+    # Llamar a la función main para convertir el PDF en Excel
+    result = main(response=True, file=[pdf_file], reportType=reportType, delete_sched=delete_sched, from_convert_pdf_API=True)
+
+   
+delete_sched = False  # Cambia esto según tus necesidades
+
+for pdf_file in pdf_files:
+    # Llamar a la función main para convertir el PDF en Excel
+    result = main(response=True, file=[pdf_file], reportType=reportType, delete_sched=delete_sched, from_convert_pdf_API=True)
+
+>>>>>>> 8d90db5da17e7f09a23152fa5d260b559110e790
 
 

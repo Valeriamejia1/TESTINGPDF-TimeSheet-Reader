@@ -100,7 +100,7 @@ class windowshandler:
 
         #Version Label
         self.versionlbl = Label(self.root,
-                            text = "V7.0",
+                            text = "V7.1",
                             fg = "black")
         self.versionlbl.pack(side= BOTTOM, anchor=SE)
 

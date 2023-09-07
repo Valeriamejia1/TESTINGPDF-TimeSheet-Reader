@@ -75,7 +75,6 @@ def main(response, file, reportType, delete_sched, from_convert_pdf_API=False):
                 path = f"QA/Output Files/OUTPUT API/{pdf_file_name}.xlsx"
             else:
                 path = f"QA/Output Files/OUTPUT API/{pdf_file_name} SCHED.xlsx"
-
         else:
             print("No se generó un archivo de salida debido a un fallo en la conversión.")
     else:

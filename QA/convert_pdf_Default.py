@@ -13,15 +13,19 @@ from Modules.pdfDefault import main
 pdf_files = ["QA/PDF/Default/06-11.pdf", 
              "QA/PDF/Default/1690203601050_1994364726.pdf",
              "QA/PDF/Default/1690808400472_1671940182.pdf",
-             #"QA/PDF/Default/Aya- WE 8.28.22.pdf",
-             #"QA/PDF/Default/Combined File.pdf",
-             #"QA/PDF/Default/Kronos Timecards TC 07-30-22.pdf",
-             #"QA/PDF/Default/Scripps Approved Kronos we 6.25.22.pdf",
-             #"QA/PDF/Default/Time Detail_100822-102122.pdf",
-             #"QA/PDF/Default/Time Detail_July152022.pdf",
-             #"QA/PDF/Default/time weston.pdf",
-             #"QA/PDF/Default/Default Empty.pdf"
+             "QA/PDF/Default/Aya- WE 8.28.22.pdf",
+             "QA/PDF/Default/Combined File.pdf",
+             "QA/PDF/Default/Kronos Timecards TC 07-30-22.pdf",
+             "QA/PDF/Default/Scripps Approved Kronos we 6.25.22.pdf",
+             "QA/PDF/Default/Time Detail_100822-102122.pdf",
+             "QA/PDF/Default/Time Detail_July152022.pdf",
+             "QA/PDF/Default/time weston.pdf",
+<<<<<<< HEAD
+             "QA/PDF/Default/Default Empty.pdf"
              ] 
+=======
+             "QA/PDF/Default/Default Empty.pdf"] 
+>>>>>>> 8d90db5da17e7f09a23152fa5d260b559110e790
 
 
 reportType = "Default"
@@ -38,14 +42,14 @@ for pdf_file in pdf_files:
     else:
         print(f"La conversión del archivo {pdf_file} falló o no se encontraron datos.")
 
-#for pdf_file in pdf_files:
+for pdf_file in pdf_files:
     # Definir los argumentos necesarios para la función main
-    #response = False  # Puedes proporcionar el valor adecuado si es necesario
+    response = False  # Puedes proporcionar el valor adecuado si es necesario
     
     # Llamar a la función main para convertir el PDF en Excel
-    #result = main(response, pdf_file, reportType, from_convert_pdf_Default=True)
+    result = main(response, pdf_file, reportType, from_convert_pdf_Default=True)
 
-    #if result:
-        #print(f"La conversión del archivo {pdf_file} se realizó con éxito.")
-    #else:
-        #print(f"La conversión del archivo {pdf_file} falló o no se encontraron datos.")
+    if result:
+        print(f"La conversión del archivo {pdf_file} se realizó con éxito.")
+    else:
+        print(f"La conversión del archivo {pdf_file} falló o no se encontraron datos.")
