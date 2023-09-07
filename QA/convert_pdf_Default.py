@@ -20,12 +20,8 @@ pdf_files = ["QA/PDF/Default/06-11.pdf",
              "QA/PDF/Default/Time Detail_100822-102122.pdf",
              "QA/PDF/Default/Time Detail_July152022.pdf",
              "QA/PDF/Default/time weston.pdf",
-<<<<<<< HEAD
              "QA/PDF/Default/Default Empty.pdf"
              ] 
-=======
-             "QA/PDF/Default/Default Empty.pdf"] 
->>>>>>> 8d90db5da17e7f09a23152fa5d260b559110e790
 
 
 reportType = "Default"
