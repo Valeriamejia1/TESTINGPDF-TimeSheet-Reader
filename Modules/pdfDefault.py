@@ -7,8 +7,14 @@ import json
 from datetime import datetime
 from Classes.auditPDFdefault import pdftest
 import warnings
-warnings.simplefilter(action='ignore', category=FutureWarning)
 import os
+import logging
+logging.getLogger("pdfbox").setLevel(logging.ERROR)
+
+
+
+#Remove warnings from the console logs
+warnings.simplefilter(action='ignore', category=FutureWarning)  
 
 def readJsonRegex():
     # read json file "Regex.json" that holds the regex that are required
