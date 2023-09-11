@@ -30,7 +30,7 @@ for pdf_file in pdf_files:
     result = main(response=True, file=[pdf_file], reportType=reportType, delete_sched=delete_sched, from_convert_pdf_API=True)
     
     if result:
-        print(f"La conversión del archivo {pdf_file} se realizó con éxito.")
+        print(f"La conversión del archivo {pdf_file} SCHED se realizó con éxito.")
     else:
         print(f"La conversión del archivo {pdf_file} falló o no se encontraron datos.")
    
