@@ -15,7 +15,7 @@ from Modules.pdfAPI import main
 pdf_files = ["QA/PDF/API/Dawson, Kathleen.pdf", 
              #"QA/PDF/API/Delta Health 4.15.23.pdf", 
              #"QA/PDF/API/Hannibal 4.15.23.pdf", 
-             #"QA/PDF/API/Mattox, Kyle.pdf", 
+             "QA/PDF/API/Mattox, Kyle.pdf", 
              #"QA/PDF/API/TMMC W.E. 4.22.pdf",
              #"QA/PDF/API/API Empty.pdf"
              ]  
