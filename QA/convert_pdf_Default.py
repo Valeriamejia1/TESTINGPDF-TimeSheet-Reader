@@ -13,12 +13,12 @@ from Modules.pdfDefault import main
 pdf_files = ["QA/PDF/Default/06-11.pdf", 
              "QA/PDF/Default/1690203601050_1994364726.pdf",
              "QA/PDF/Default/1690808400472_1671940182.pdf",
-             "QA/PDF/Default/Aya- WE 8.28.22.pdf",
-             "QA/PDF/Default/Combined File.pdf",
-             "QA/PDF/Default/Kronos Timecards TC 07-30-22.pdf",
-             "QA/PDF/Default/Scripps Approved Kronos we 6.25.22.pdf",
-             "QA/PDF/Default/Time Detail_100822-102122.pdf",
-             "QA/PDF/Default/Time Detail_July152022.pdf",
+             #"QA/PDF/Default/Aya- WE 8.28.22.pdf",
+             #"QA/PDF/Default/Combined File.pdf",
+             #"QA/PDF/Default/Kronos Timecards TC 07-30-22.pdf",
+             #"QA/PDF/Default/Scripps Approved Kronos we 6.25.22.pdf",
+             #"QA/PDF/Default/Time Detail_100822-102122.pdf",
+             #"QA/PDF/Default/Time Detail_July152022.pdf",
              "QA/PDF/Default/time weston.pdf",
              "QA/PDF/Default/Default Empty.pdf"
              ] 
