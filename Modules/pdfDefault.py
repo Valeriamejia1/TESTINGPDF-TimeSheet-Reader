@@ -8,8 +8,6 @@ from datetime import datetime
 from Classes.auditPDFdefault import pdftest
 import warnings
 import os
-import logging
-logging.getLogger("pdfbox").setLevel(logging.ERROR)
 
 
 
