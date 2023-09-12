@@ -17,7 +17,8 @@ pdf_files = ["QA/PDF/API/Dawson, Kathleen.pdf",
              #"QA/PDF/API/Hannibal 4.15.23.pdf"             , pega jenkins
              "QA/PDF/API/Mattox, Kyle.pdf", 
              #"QA/PDF/API/TMMC W.E. 4.22.pdf"               , pega jenkins
-             "QA/PDF/API/API Empty.pdf"
+             "QA/PDF/API/API Empty.pdf",
+             "QA/PDF/API/Pages from 1-130 TMMC W.E. 4.22.pdf"
              ]  
 
 reportType = "API Format"  # Reemplaza con el tipo de informe correcto
