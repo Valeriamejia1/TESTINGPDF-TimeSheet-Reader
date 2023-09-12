@@ -105,11 +105,11 @@ class ExcelTest(unittest.TestCase):
     #Files: TimeDetailsSorted_KEVCOL, Qualvis TimeSheets 2023-06-03
     
     def test_UKGS_3_1(self):
-        self.compare_excel_files("TestCasesUKGSimplified/ORIG Files/TimeDetailsSorted_KEVCOL ORIG.xlsx", "QA/Output Files/OUTPUT UKGSimplified/TimeDetailsSorted_KEVCOL.xlsx")
+        self.compare_excel_files("QA/PDF-Reader-unittest/TestCasesUKGSimplified/ORIG Files/TimeDetailsSorted_KEVCOL ORIG.xlsx", "QA/Output Files/OUTPUT UKGSimplified/TimeDetailsSorted_KEVCOL.xlsx")
         print("TEST 3.1 UKGSimplified CORRECT: TimeDetailsSorted_KEVCOL.xlsx data match the original version")
 
     def test_UKGS_3_2(self):
-        self.compare_excel_files("TestCasesUKGSimplified/ORIG Files/Qualvis TimeSheets 2023-06-03 ORIG.xlsx", "QA/Output Files/OUTPUT UKGSimplified/Qualvis TimeSheets 2023-06-03.xlsx")
+        self.compare_excel_files("QA/PDF-Reader-unittest/TestCasesUKGSimplified/ORIG Files/Qualvis TimeSheets 2023-06-03 ORIG.xlsx", "QA/Output Files/OUTPUT UKGSimplified/Qualvis TimeSheets 2023-06-03.xlsx")
         print("TEST 3.2 UKGSimplified CORRECT: Qualvis TimeSheets 2023-06-03.xlsx data match the original version")
 
     def test_UKGS_4(self):

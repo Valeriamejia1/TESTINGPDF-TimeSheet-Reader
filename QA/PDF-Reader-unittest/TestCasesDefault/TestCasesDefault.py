@@ -329,8 +329,8 @@ class ExcelTestCase(unittest.TestCase):
     def test_Default_9(self): 
         # Files to validate
         # Desc: Date without + or -
-        file_paths = ['QA\Output Files\OUTPUT Default\Pages 680-685 from Aya- WE 8.28.22.xlsx',
-                      'QA\Output Files\OUTPUT Default\Pages 680-685 from Aya- WE 8.28.22 minutes.xlsx']
+        file_paths = ['QA/Output Files/OUTPUT Default/Pages 680-685 from Aya- WE 8.28.22.xlsx',
+                      'QA/Output Files/OUTPUT Default/Pages 680-685 from Aya- WE 8.28.22 minutes.xlsx']
         sheet_name = 'Sheet1'
 
         # Regular expression to check for valid date format 'mm/dd/yyyy' and to detect '+' or '-' symbols

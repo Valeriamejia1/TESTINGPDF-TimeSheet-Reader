@@ -163,11 +163,11 @@ class ExcelTest(unittest.TestCase):
         print ("TEST 5 UKGCommon CORRECT: For AUGUSTE, LOURDJINA the GLCODES match those in the PDF")
 
     def test_UKGC_6_1(self):
-        self.compare_excel_files("QA/Output Files/OUTPUT UKGCommon/martin b.xlsx", "QA/Output Files/OUTPUT UKGCommon/martin b.xlsx")
+        self.compare_excel_files("QA/PDF-Reader-unittest/TestCasesUKGCommon/martin b ORIG.xlsx", "QA/Output Files/OUTPUT UKGCommon/martin b.xlsx")
         print("TEST 6.1 UKGCommon CORRECT: martin b ORIG.xlsx data match the original version")
 
     def test_UKGC_6_2(self):
-        self.compare_excel_files("QA/Output Files/OUTPUT UKGCommon/Martin Holiday Shifts 7.3 to 7.5.23.xlsx", "QA/Output Files/OUTPUT UKGCommon/Martin Holiday Shifts 7.3 to 7.5.23.xlsx")
+        self.compare_excel_files("QA/PDF-Reader-unittest/TestCasesUKGCommon/Martin Holiday Shifts 7.3 to 7.5.23 ORIG.xlsx", "QA/Output Files/OUTPUT UKGCommon/Martin Holiday Shifts 7.3 to 7.5.23.xlsx")
         print("TEST 6.2 UKGCommon CORRECT: Martin Holiday Shifts 7.3 to 7.5.23.xlsx data match the original version")
 
     def test_UKGC_8(self):

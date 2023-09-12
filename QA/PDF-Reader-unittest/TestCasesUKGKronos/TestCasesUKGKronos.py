@@ -58,10 +58,6 @@ class TestExcel(unittest.TestCase):
 
     #Methods required for test_UKGK4
 
-    def test_UKGS_4(self):
-        self.compare_excel_files("TestCasesUKGKronos/Qualivis Time report PPE 062423 ORIG.xlsx", "QA/Output Files/OUTPUT UKGKronos/Qualivis Time report PPE 062423.xlsx")
-        print("TEST 4 UKGKronos CORRECT: Qualivis Time report PPE 062423.xlsx data match the original version")
-
     def generate_difference_message(self, original_df, new_df, original_file, new_file):
         original_df = original_df.fillna("NA")
         new_df = new_df.fillna("NA")
@@ -92,6 +88,11 @@ class TestExcel(unittest.TestCase):
             original_df.equals(new_df),
             self.generate_difference_message(original_df, new_df, original_file, new_file),
         )
+
+    def test_UKGS_4(self):
+        self.compare_excel_files("QA/PDF-Reader-unittest/TestCasesUKGKronos/Qualivis Time report PPE 062423 ORIG.xlsx", "QA/Output Files/OUTPUT UKGKronos/Qualivis Time report PPE 062423.xlsx")
+        print("TEST 4 UKGKronos CORRECT: Qualivis Time report PPE 062423.xlsx data match the original version")
+
 
     #Descrition: Check Exe has the same data as last commit
     #Files: Qualivis Time report PPE 062423
@@ -134,7 +135,7 @@ class TestExcel(unittest.TestCase):
     
     def test_UKGK_6(self):
         # Load the Excel files into pandas DataFrames
-        expected_df = pd.read_excel("TestCasesUKGKronos/Qualivis Time report PPE 062423 ORIG.xlsx")
+        expected_df = pd.read_excel("QA/PDF-Reader-unittest/TestCasesUKGKronos/Qualivis Time report PPE 062423 ORIG.xlsx")
         actual_df = pd.read_excel("QA/Output Files/OUTPUT UKGKronos/Qualivis Time report PPE 062423.xlsx")
 
         # Fill NaN values in both DataFrames with empty strings
