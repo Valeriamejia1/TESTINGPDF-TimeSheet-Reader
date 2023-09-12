@@ -10,17 +10,17 @@ sys.path.append(os.path.join(base_dir, ".."))  # ".." significa el directorio pa
 from Modules.pdfDefault import main
 
 # Lista de nombres de archivos PDF a convertir
-pdf_files = ["QA/PDF/Default/06-11.pdf", 
+pdf_files = ["QA/PDF/Default/06-11.pdf",                                     #No se cae
              #"QA/PDF/Default/1690203601050_1994364726.pdf",
              #"QA/PDF/Default/1690808400472_1671940182.pdf",
              #"QA/PDF/Default/Aya- WE 8.28.22.pdf",
-             "QA/PDF/Default/Combined File.pdf",
+             #"QA/PDF/Default/Combined File.pdf",                            Se cae jenkins
              #"QA/PDF/Default/Kronos Timecards TC 07-30-22.pdf",
              #"QA/PDF/Default/Scripps Approved Kronos we 6.25.22.pdf",
-             #"QA/PDF/Default/Time Detail_100822-102122.pdf",
-             #"QA/PDF/Default/Time Detail_July152022.pdf",
-             "QA/PDF/Default/time weston.pdf",
-             "QA/PDF/Default/Default Empty.pdf"
+             #"QA/PDF/Default/Time Detail_100822-102122.pdf",                Se cae jenkins
+             #"QA/PDF/Default/Time Detail_July152022.pdf",                   Se cae jenkins
+             "QA/PDF/Default/time weston.pdf",                               #No se cae  
+             "QA/PDF/Default/Default Empty.pdf"                              #No se cae  
              ] 
 
 
