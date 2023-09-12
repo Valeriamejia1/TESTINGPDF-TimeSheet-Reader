@@ -24,8 +24,10 @@ pdf_files = ["QA/PDF/Default/06-11.pdf",                                        
              "QA/PDF/Default/Pages 1-242 from 1690203601050_1994364726.pdf",    #No se cae 
              "QA/PDF/Default/Pages 243-483 from 1690203601050_1994364726-2.pdf",#No se cae 
              "QA/PDF/Default/Pages 1-164 from 1690808400472_1671940182.pdf",    #No se cae 
-             "QA/PDF/Default/Pages 165-329 from 1690808400472_1671940182.pdf"   #No se cae 
-
+             "QA/PDF/Default/Pages 165-329 from 1690808400472_1671940182.pdf",  #No se cae 
+             "QA/PDF/Default/Pages 680-685 from Aya- WE 8.28.22.pdf",
+             "QA/PDF/Default/Pages 1-100 from Combined File.pdf",
+             "QA/PDF/Default/Pages 101-199 from Combined File.pdf"
              ] 
 
 
