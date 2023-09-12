@@ -71,10 +71,10 @@ class ExcelTestCase(unittest.TestCase):
         return len(glcode_sin_guiones) == 9 and glcode_sin_guiones.isdigit()
 
     def test_DEFAULT_3(self):
-        files = ["QA\Output Files\OUTPUT Default\Pages 1-100 from Combined File.xlsx", 
-                 "QA\Output Files\OUTPUT Default\Pages 101-199 from Combined File.xlsx",
-                 "QA\Output Files\OUTPUT Default\Pages 1-100 from Combined File minutes.xlsx",
-                 "QA\Output Files\OUTPUT Default\Pages 101-199 from Combined File minutes.xlsx"]
+        files = ["QA/Output Files/OUTPUT Default/Pages 1-100 from Combined File.xlsx", 
+                 "QA/Output Files/OUTPUT Default/Pages 101-199 from Combined File.xlsx",
+                 "QA/Output Files/OUTPUT Default/Pages 1-100 from Combined File minutes.xlsx",
+                 "QA/Output Files/OUTPUT Default/Pages 101-199 from Combined File minutes.xlsx"]
 
         all_incorrect_rows = set()  # We use a set to store the incorrect rows without duplicates
 
