@@ -11,9 +11,9 @@ from Modules.pdfDefault import main
 
 # Lista de nombres de archivos PDF a convertir
 pdf_files = ["QA/PDF/Default/06-11.pdf",                                     #No se cae
-             #"QA/PDF/Default/1690203601050_1994364726.pdf",
+             "QA/PDF/Default/1690203601050_1994364726.pdf",
              #"QA/PDF/Default/1690808400472_1671940182.pdf",
-             #"QA/PDF/Default/Aya- WE 8.28.22.pdf",
+             #"QA/PDF/Default/Aya- WE 8.28.22.pdf",                          Se cae Jenkins
              #"QA/PDF/Default/Combined File.pdf",                            Se cae jenkins
              #"QA/PDF/Default/Kronos Timecards TC 07-30-22.pdf",
              #"QA/PDF/Default/Scripps Approved Kronos we 6.25.22.pdf",
