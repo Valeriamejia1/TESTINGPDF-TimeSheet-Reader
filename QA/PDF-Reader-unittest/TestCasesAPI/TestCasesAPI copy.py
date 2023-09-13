@@ -8,45 +8,38 @@ warnings.filterwarnings("ignore", category=DeprecationWarning)
 class TestExcel(unittest.TestCase):
 
     def test_API_1(self):
-        # Lista de archivos que deseas verificar
-        file_paths = ["QA\Output Files\OUTPUT API\Pages from 1-130 TMMC W.E. 4.22 SCHED.xlsx", 
-                      "QA\Output Files\OUTPUT API\Pages from 131-264 TMMC W.E. 4.22-5 SCHED.xlsx", 
-                      "QA\Output Files\OUTPUT API\Pages from 265-398TMMC W.E. 4.22-6 SCHED.xlsx",
-                      "QA\Output Files\OUTPUT API\Pages from 399-517 TMMC W.E. 4.22-7 SCHED.xlsx"]
+       
+        # Description TestCase: Output Data Should remove shifts with Paycode LCUP, SHDIF and LUNCH
+        # File: TMMC
 
-        expected_values = ["LUNCH", "LCUP", "SHDIF"]
+        # Read Excel file and select the sheet "OutputData"
+        data_frame = pd.read_excel("QA/Output Files/OUTPUT API/TMMC W.E. 4.22.xlsx", sheet_name="OutputData")
 
-        incorrect_files = []
+        # Obtain the column
+        Column = data_frame["PAYCODE"]
 
-        for file_path in file_paths:
-            # Leer el archivo Excel y seleccionar la hoja "OutputData"
-            data_frame = pd.read_excel(file_path, sheet_name="OutputData")
+        # Checked the expected Values
+        expectedValues = ["LUNCH", "LCUP", "SHDIF"]
 
-            # Obtener la columna "PAYCODE"
-            column = data_frame["PAYCODE"]
+        missingValues = []
 
-            # Verificar si los valores esperados están presentes en la columna
-            missing_values = [value for value in expected_values if value in column.values]
+        # if an expected value is not found in column.values, it is added to the missing_values list.
+        for value in expectedValues:
+            if value in Column.values:
+                missingValues.append(value)
 
-            if missing_values:
-                incorrect_files.append((file_path, missing_values))
+        self.assertListEqual(missingValues, [], f"The following values are not present in the PAYCODE column in Excel TMMC file: {missingValues}")
 
-        if not incorrect_files:
-            print("TEST API 1 CORRECT: The files do not contain 'LUNCH', 'LCUP', 'SHDIF' in columnn 'PAYCODE'")
-        else:
-            error_message = "ERROR: At least one file contain 'LUNCH', 'LCUP', 'SHDIF' in column 'PAYCODE'\n"
-            for file_path, missing_values in incorrect_files:
-                error_message += f"ERROR: {self._testMethodName} ({self.__class__.__name__})\n"
-                error_message += f"  - The file {file_path} contain data {', '.join(missing_values)} in columns 'PAYCODE'\n"
-            self.fail(error_message)
-
+        if not missingValues:
+            
+            print(".TEST 1 API CORRECT: The file TMMC W.E. 4.22 does not contain data 'LUNCH', 'LCUP', 'SHDIF' in the column 'PAYCODE'")
 
     def test_API_2(self):
     
         # Description TestCase: Remove SCHED shifts when necessary
         # File: DELTA
 
-        data_frame = pd.read_excel("QA\Output Files\OUTPUT API\Delta Health 4.15.23.xlsx", sheet_name="OutputData")
+        data_frame = pd.read_excel("QA/Output Files/OUTPUT API/Delta Health 4.15.23.xlsx", sheet_name="OutputData")
 
         column = data_frame["PAYCODE"]
 
@@ -58,66 +51,40 @@ class TestExcel(unittest.TestCase):
         print("TEST 2 API CORRECT: The value SCHED is NOT present in the PAYCODE column in the Delta Health 4.15.23 file.")
     
     def test_API_3(self):
-        # Lista de archivos que deseas verificar
-        file_paths = ["QA\Output Files\OUTPUT API\Pages from 1-130 TMMC W.E. 4.22.xlsx",
-                      "QA\Output Files\OUTPUT API\Pages from 131-264 TMMC W.E. 4.22-5.xlsx",
-                      "QA\Output Files\OUTPUT API\Pages from 265-398TMMC W.E. 4.22-6.xlsx",
-                      "QA\Output Files\OUTPUT API\Pages from 399-517 TMMC W.E. 4.22-7.xlsx"]
 
-        expected_values = ["SCHED"]
+        #Description TestCase: Remove SCHED shifts when is neccesary
+        #File: TMMC
+        data_frame = pd.read_excel("QA/Output Files/OUTPUT API/TMMC W.E. 4.22.xlsx", sheet_name="OutputData")
 
-        incorrect_files = []
+        Column = data_frame["PAYCODE"]
 
-        for file_path in file_paths:
-            data_frame = pd.read_excel(file_path, sheet_name="OutputData")
-            Column = data_frame["PAYCODE"]
-            incorrect_values = [value for value in Column if value in expected_values]
+        expectedValues = ["SCHED"]
 
-            if incorrect_values:
-                incorrect_files.append((file_path, incorrect_values))
+        for value in Column:
+            self.assertNotIn(value, expectedValues, f"The value '{value}' is present in the PAYCODE column in the TMMC file.")
 
-        if not incorrect_files:
-            print("TEST API 3 CORRECT: The value 'SCHED' is NOT present 'PAYCODE' in the files.")
-        else:
-            error_message = "ERROR: At least one file contain 'SCHED' in column 'PAYCODE':\n"
-            for file_path, incorrect_values in incorrect_files:
-                error_message += f"  - The file {file_path} contain the following data 'SCHED': {', '.join(incorrect_values)}\n"
-            self.fail(error_message)
-
+        print("TEST 3 API CORRECT: The value SCHED is NOT present in the PAYCODE column in the TMMC W.E. 4.22 file.")
     
     def test_API_4(self):
-        # Lista de archivos que deseas verificar
-        file_paths = ["QA\Output Files\OUTPUT API\Pages from 1-130 TMMC W.E. 4.22.xlsx",
-                      "QA\Output Files\OUTPUT API\Pages from 131-264 TMMC W.E. 4.22-5.xlsx",
-                      "QA\Output Files\OUTPUT API\Pages from 265-398TMMC W.E. 4.22-6.xlsx",
-                      "QA\Output Files\OUTPUT API\Pages from 359-517 TMMC W.E. 4.22.xlsx"]
+        # Carga el archivo de Excel en un DataFrame
+        df = pd.read_excel('QA/Output Files/OUTPUT API/TMMC W.E. 4.22.xlsx', sheet_name='OutputData')
+        
+        # Filtra las filas donde el shift de PAYCODE está vacío pero el de HOURS no
+        empty_hours = df[(df['PAYCODE'].notnull()) & (df['HOURS'].isnull())]
+        
+        # Filtra las filas donde el shift de PAYCODE no está vacío pero el de HOURS sí
+        empty_paycode = df[(df['PAYCODE'].isnull()) & (df['HOURS'].notnull())]
+        
+        # Comprueba si hay filas que cumplan con los filtros
+        if not empty_hours.empty:
+            failed_rows = empty_hours.index + 2
+            self.fail("PAYCODE shift is not empty but HOURS shift is empty in rows {}".format(failed_rows))
 
-        for file_path in file_paths:
-            # Carga el archivo de Excel en un DataFrame
-            df = pd.read_excel(file_path, sheet_name='OutputData')
+        if not empty_paycode.empty:
+            failed_rows = empty_paycode.index + 2
+            self.fail("The PAYCODE shift is empty but the HOURS shift is not in the rows. {}".format(failed_rows))
 
-            # Filtra las filas donde el shift de PAYCODE está vacío pero el de HOURS no
-            empty_hours = df[(df['PAYCODE'].notnull()) & (df['HOURS'].isnull())]
-
-            # Filtra las filas donde el shift de PAYCODE no está vacío pero el de HOURS sí
-            empty_paycode = df[(df['PAYCODE'].isnull()) & (df['HOURS'].notnull())]
-
-            # Comprueba si hay filas que cumplan con los filtros
-            if not empty_hours.empty or not empty_paycode.empty:
-                error_message = f"ERROR: {self._testMethodName} ({self.__class__.__name__})\n"
-                error_message += f"  - En el archivo {file_path}:\n"
-
-                if not empty_hours.empty:
-                    failed_rows = empty_hours.index + 2
-                    error_message += f"    PAYCODE shift is not empty but HOURS shift is empty in rows {failed_rows}\n"
-
-                if not empty_paycode.empty:
-                    failed_rows = empty_paycode.index + 2
-                    error_message += f"    The PAYCODE shift is empty but the HOURS shift is not in the rows {failed_rows}\n"
-
-                self.fail(error_message)
-
-        print(".TEST 4 API CORRECT: If no data in some shift PAYCODES in the HOURS shift there is no data either in all files.")
+        print(".TEST 4 API CORRECT: If no data in some shift PAYCODES in the HOURS shift there is no data either., in the file TMMC W.E. 4.22.xlsx")
 
     def test_API_5(self):
 
@@ -140,7 +107,7 @@ class TestExcel(unittest.TestCase):
     #File: Hannibal
 
         # Upload Excel file
-        excel_file = 'QA\Output Files\OUTPUT API\Pages from 96-191 Hannibal 4.15.23-2 SCHED.xlsx'
+        excel_file = 'QA/Output Files/OUTPUT API/Hannibal 4.15.23 SCHED.xlsx'
         df = pd.read_excel(excel_file, sheet_name='OutputData')
 
         # Specify the search criteria
@@ -186,14 +153,14 @@ class TestExcel(unittest.TestCase):
                 missingValues.append(value)
         self.assertFalse(missingValues, f"The following values are not present in the NAME column in Excel Delta file: {missingValues}")
 
-        print("TEST 7 API CORRECT: At least one row was found: Hunter, Angelique,Halums, Brittney,Cross, Destin,Radford, Gladys,Hale, Shannon,Kelly, Joby, Lowe, Sherrie, Lewis, Susan, Towery, Brittany in file Delta Health 4.15.23 SCHED")
+        print("TEST 7 API CORRECT: Se encontro al menos una fila para: Hunter, Angelique,Halums, Brittney,Cross, Destin,Radford, Gladys,Hale, Shannon,Kelly, Joby, Lowe, Sherrie, Lewis, Susan, Towery, Brittany in file Delta Health 4.15.23 SCHED")
 
     def test_API_9(self):
         # Description: Validate Output Out time from TMMC as it takes the out time
         # File: TMMC WITH SCHED
 
         # Upload Excel file
-        df = pd.read_excel("QA\Output Files\OUTPUT API\Pages from 359-517 TMMC W.E. 4.22 SCHED.xlsx", sheet_name="OutputData")
+        df = pd.read_excel("QA/Output Files/OUTPUT API/TMMC W.E. 4.22 SCHED.xlsx", sheet_name="OutputData")
 
         # Format the date and time columns to match the expected format.
         df["STARTDTM"] = pd.to_datetime(df["STARTDTM"], format="%m/%d/%Y %H:%M")
