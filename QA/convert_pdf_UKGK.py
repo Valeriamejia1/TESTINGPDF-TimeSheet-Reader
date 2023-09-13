@@ -23,6 +23,6 @@ for file in pdf_files:
     result = main(response, file, reportType, from_convert_pdf_UKGK=True)
 
     if result:
-        print(f"La conversión del archivo {file} se realizó con éxito.")
+        print(f"The conversion File {file} was successful.")
     else:
-        print(f"La conversión del archivo {file} falló o no se encontraron datos.")
+        print(f"The conversion File {file} failed or no data was found.")
