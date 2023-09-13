@@ -9,10 +9,10 @@ class TestExcel(unittest.TestCase):
 
     def test_API_1(self):
         # Lista de archivos que deseas verificar
-        file_paths = ["QA\Output Files\OUTPUT API\Pages from 1-130 TMMC W.E. 4.22 SCHED.xlsx", 
-                      "QA\Output Files\OUTPUT API\Pages from 131-264 TMMC W.E. 4.22-5 SCHED.xlsx", 
-                      "QA\Output Files\OUTPUT API\Pages from 265-398TMMC W.E. 4.22-6 SCHED.xlsx",
-                      "QA\Output Files\OUTPUT API\Pages from 399-517 TMMC W.E. 4.22-7 SCHED.xlsx"]
+        file_paths = ["QA/Output Files/OUTPUT API/Pages from 1-130 TMMC W.E. 4.22 SCHED.xlsx", 
+                      "QA/Output Files/OUTPUT API/Pages from 131-264 TMMC W.E. 4.22-5 SCHED.xlsx", 
+                      "QA/Output Files/OUTPUT API/Pages from 265-398TMMC W.E. 4.22-6 SCHED.xlsx",
+                      "QA/Output Files/OUTPUT API/Pages from 359-517 TMMC W.E. 4.22 SCHED.xlsx"]
 
         expected_values = ["LUNCH", "LCUP", "SHDIF"]
 
@@ -46,7 +46,7 @@ class TestExcel(unittest.TestCase):
         # Description TestCase: Remove SCHED shifts when necessary
         # File: DELTA
 
-        data_frame = pd.read_excel("QA\Output Files\OUTPUT API\Delta Health 4.15.23.xlsx", sheet_name="OutputData")
+        data_frame = pd.read_excel("QA/Output Files/OUTPUT API/Delta Health 4.15.23.xlsx", sheet_name="OutputData")
 
         column = data_frame["PAYCODE"]
 
@@ -59,10 +59,10 @@ class TestExcel(unittest.TestCase):
     
     def test_API_3(self):
         # Lista de archivos que deseas verificar
-        file_paths = ["QA\Output Files\OUTPUT API\Pages from 1-130 TMMC W.E. 4.22.xlsx",
-                      "QA\Output Files\OUTPUT API\Pages from 131-264 TMMC W.E. 4.22-5.xlsx",
-                      "QA\Output Files\OUTPUT API\Pages from 265-398TMMC W.E. 4.22-6.xlsx",
-                      "QA\Output Files\OUTPUT API\Pages from 399-517 TMMC W.E. 4.22-7.xlsx"]
+        file_paths = ["QA/Output Files/OUTPUT API/Pages from 1-130 TMMC W.E. 4.22.xlsx",
+                      "QA/Output Files/OUTPUT API/Pages from 131-264 TMMC W.E. 4.22-5.xlsx",
+                      "QA/Output Files/OUTPUT API/Pages from 265-398TMMC W.E. 4.22-6.xlsx",
+                      "QA/Output Files/OUTPUT API/Pages from 359-517 TMMC W.E. 4.22.xlsx"]
 
         expected_values = ["SCHED"]
 
@@ -87,10 +87,10 @@ class TestExcel(unittest.TestCase):
     
     def test_API_4(self):
         # Lista de archivos que deseas verificar
-        file_paths = ["QA\Output Files\OUTPUT API\Pages from 1-130 TMMC W.E. 4.22.xlsx",
-                      "QA\Output Files\OUTPUT API\Pages from 131-264 TMMC W.E. 4.22-5.xlsx",
-                      "QA\Output Files\OUTPUT API\Pages from 265-398TMMC W.E. 4.22-6.xlsx",
-                      "QA\Output Files\OUTPUT API\Pages from 359-517 TMMC W.E. 4.22.xlsx"]
+        file_paths = ["QA/Output Files/OUTPUT API/Pages from 1-130 TMMC W.E. 4.22.xlsx",
+                      "QA/Output Files/OUTPUT API/Pages from 131-264 TMMC W.E. 4.22-5.xlsx",
+                      "QA/Output Files/OUTPUT API/Pages from 265-398TMMC W.E. 4.22-6.xlsx",
+                      "QA/Output Files/OUTPUT API/Pages from 359-517 TMMC W.E. 4.22.xlsx"]
 
         for file_path in file_paths:
             # Carga el archivo de Excel en un DataFrame
@@ -140,7 +140,7 @@ class TestExcel(unittest.TestCase):
     #File: Hannibal
 
         # Upload Excel file
-        excel_file = 'QA\Output Files\OUTPUT API\Pages from 96-191 Hannibal 4.15.23-2 SCHED.xlsx'
+        excel_file = 'QA/Output Files/OUTPUT API/Pages from 96-191 Hannibal 4.15.23-2 SCHED.xlsx'
         df = pd.read_excel(excel_file, sheet_name='OutputData')
 
         # Specify the search criteria
@@ -193,7 +193,7 @@ class TestExcel(unittest.TestCase):
         # File: TMMC WITH SCHED
 
         # Upload Excel file
-        df = pd.read_excel("QA\Output Files\OUTPUT API\Pages from 359-517 TMMC W.E. 4.22 SCHED.xlsx", sheet_name="OutputData")
+        df = pd.read_excel("QA/Output Files/OUTPUT API/Pages from 359-517 TMMC W.E. 4.22 SCHED.xlsx", sheet_name="OutputData")
 
         # Format the date and time columns to match the expected format.
         df["STARTDTM"] = pd.to_datetime(df["STARTDTM"], format="%m/%d/%Y %H:%M")
@@ -244,8 +244,8 @@ class TestExcel(unittest.TestCase):
         # File: TMMC WITH SCHED
 
         # Upload Excel file
-        df_output = pd.read_excel("QA/Output Files/OUTPUT API/TMMC W.E. 4.22 SCHED.xlsx", sheet_name="OutputData")
-        df_raw = pd.read_excel("QA/Output Files/OUTPUT API/TMMC W.E. 4.22 SCHED.xlsx", sheet_name="RawData")
+        df_output = pd.read_excel("QA/Output Files/OUTPUT API/Pages from 359-517 TMMC W.E. 4.22 SCHED.xlsx", sheet_name="OutputData")
+        df_raw = pd.read_excel("QA/Output Files/OUTPUT API/Pages from 359-517 TMMC W.E. 4.22 SCHED.xlsx", sheet_name="RawData")
 
         # Format the date and time columns to match the expected format.
         df_output["STARTDTM"] = pd.to_datetime(df_output["STARTDTM"], format="%m/%d/%Y %H:%M")
@@ -310,16 +310,16 @@ class TestExcel(unittest.TestCase):
             self.assertEqual(errors, [], f"The following errors were found in the testcase:\n\n{', '.join(errors)}")
             print("TEST 10 API CORRECT: Data for Chekabab, Zahra and for Maldonado, Marleny were found in the file TMMC W.E. 4.22 SCHED in OutputData and RawData sheet")
 
-    def test_API_11(self):
+    def test_API_11_1(self):
 
         #Descrition: Check Exe has the same data as last commit
         #File: TMMC WITH SCHED
 
         # Loads the Excel file in a DataFrame
-        df = pd.read_excel("QA/Output Files/OUTPUT API/TMMC W.E. 4.22 SCHED.xlsx", sheet_name="OutputData")
+        df = pd.read_excel("QA/Output Files/OUTPUT API/Pages from 1-130 TMMC W.E. 4.22 SCHED.xlsx", sheet_name="OutputData")
         
         # Verify the number of rows
-        self.assertEqual(len(df), 1349-1, "Number of rows is not equal to 1349")
+        self.assertEqual(len(df), 351-1, "Number of rows is not equal to 1349")
         
         # Verify the existence of the column "NAME".
         self.assertIn("NAME", df.columns, "The column 'NAME' was not found")
@@ -329,9 +329,79 @@ class TestExcel(unittest.TestCase):
         
         # Verify the values in the first and last row
         self.assertEqual(names.iloc[0], "Yu, Ace", "The value in the first row of 'NAME' is not 'Yu, Ace'.")
+        self.assertEqual(names.iloc[-1], "Prokop, Debbie", "The value in the last row of 'NAME' is not 'Prokop, Debbie'.")
+
+        print("TEST 11.1 API CORRECT: Checked that the file Pages from 1-130 TMMC W.E. 4.22 SCHED.xlsx still has the same number of rows and that the first and last row are the same.")
+
+    def test_API_11_2(self):
+
+        #Descrition: Check Exe has the same data as last commit
+        #File: TMMC WITH SCHED
+
+        # Loads the Excel file in a DataFrame
+        df = pd.read_excel("QA/Output Files/OUTPUT API/Pages from 131-264 TMMC W.E. 4.22-5 SCHED.xlsx", sheet_name="OutputData")
+        
+        # Verify the number of rows
+        self.assertEqual(len(df), 352-1, "Number of rows is not equal to 1349")
+        
+        # Verify the existence of the column "NAME".
+        self.assertIn("NAME", df.columns, "The column 'NAME' was not found")
+        
+        # Gets the values of the column "NAME".
+        names = df["NAME"]
+        
+        # Verify the values in the first and last row
+        self.assertEqual(names.iloc[0], "Broxton, DeJhani", "The value in the first row of 'NAME' is not 'Broxton, DeJhani'.")
+        self.assertEqual(names.iloc[-1], "McClellan, Karen", "The value in the last row of 'NAME' is not 'McClellan, Karen'.")
+
+        print("TEST 11.2 API CORRECT: Checked that the file Pages from 131-264 TMMC W.E. 4.22-5 SCHED.xlsx still has the same number of rows and that the first and last row are the same.")
+
+    def test_API_11_3(self):
+
+        #Descrition: Check Exe has the same data as last commit
+        #File: TMMC WITH SCHED
+
+        # Loads the Excel file in a DataFrame
+        df = pd.read_excel("QA/Output Files/OUTPUT API/Pages from 265-398TMMC W.E. 4.22-6 SCHED.xlsx", sheet_name="OutputData")
+        
+        # Verify the number of rows
+        self.assertEqual(len(df), 342-1, "Number of rows is not equal to 1349")
+        
+        # Verify the existence of the column "NAME".
+        self.assertIn("NAME", df.columns, "The column 'NAME' was not found")
+        
+        # Gets the values of the column "NAME".
+        names = df["NAME"]
+        
+        # Verify the values in the first and last row
+        self.assertEqual(names.iloc[0], "Monteagudo, Kathleen J", "The value in the first row of 'NAME' is not 'Monteagudo, Kathleen J'.")
+        self.assertEqual(names.iloc[-1], "Martins, Molly", "The value in the last row of 'NAME' is not 'Martins, Molly'.")
+
+        print("TEST 11.3 API CORRECT: Checked that the file Pages from 265-398TMMC W.E. 4.22-6 SCHED.xlsx still has the same number of rows and that the first and last row are the same.")
+
+    def test_API_11_4(self):
+
+        #Descrition: Check Exe has the same data as last commit
+        #File: TMMC WITH SCHED
+
+        # Loads the Excel file in a DataFrame
+        df = pd.read_excel("QA/Output Files/OUTPUT API/Pages from 359-517 TMMC W.E. 4.22 SCHED.xlsx", sheet_name="OutputData")
+        
+        # Verify the number of rows
+        self.assertEqual(len(df), 402-1, "Number of rows is not equal to 1349")
+        
+        # Verify the existence of the column "NAME".
+        self.assertIn("NAME", df.columns, "The column 'NAME' was not found")
+        
+        # Gets the values of the column "NAME".
+        names = df["NAME"]
+        
+        # Verify the values in the first and last row
+        self.assertEqual(names.iloc[0], "Maldonado, Marleny", "The value in the first row of 'NAME' is not 'Maldonado, Marleny'.")
         self.assertEqual(names.iloc[-1], "Chekabab, Zahra", "The value in the last row of 'NAME' is not 'Chekabab, Zahra'.")
 
-        print("TEST 11 API CORRECT: Checked that the file TestCasesAPI/TestCasesAPI/TMMC W.E. 4.22 SCHED.xlsx still has the same number of rows and that the first and last row are the same.")
+        print("TEST 11.4 API CORRECT: Checked that the file Pages from 359-517 TMMC W.E. 4.22 SCHED.xlsx still has the same number of rows and that the first and last row are the same.")
+
 
     #Methods required for API_TEST_12 and API_TEST_13
 
@@ -370,19 +440,24 @@ class TestExcel(unittest.TestCase):
     #Files: Test Dawson, Kathleen //  Mattox, Kyle  // Hannibal 4.15.23
 
     def test_API_12_1(self):
-        self.compare_excel_files("TestCasesAPI/ORIG Files/Dawson, Kathleen ORIG.xlsx", "QA/Output Files/OUTPUT API/Dawson, Kathleen.xlsx")
+        self.compare_excel_files("QA/PDF-Reader-unittest/TestCasesAPI/ORIG Files/Dawson, Kathleen ORIG.xlsx", "QA/Output Files/OUTPUT API/Dawson, Kathleen.xlsx")
         self.assertTrue(True)
         print("TEST 12.1 API CORRECT: The Dawson, Kathleen.xlsx data match the original version.")
 
     def test_API_12_2(self):
-        self.compare_excel_files("TestCasesAPI/ORIG Files/Mattox, Kyle ORIG.xlsx", "QA/Output Files/OUTPUT API/Mattox, Kyle.xlsx")
+        self.compare_excel_files("QA/PDF-Reader-unittest/TestCasesAPI/ORIG Files/Mattox, Kyle ORIG.xlsx", "QA/Output Files/OUTPUT API/Mattox, Kyle.xlsx")
         self.assertTrue(True)
         print("TEST 12.2 API CORRECT:The Mattox, Kyle.xlsx data match the original version.")
 
-    def test_API_13(self):
-        self.compare_excel_files("TestCasesAPI/ORIG Files/Hannibal 4.15.23 ORIG.xlsx", "QA/Output Files/OUTPUT API/Hannibal 4.15.23.xlsx")
+    def test_API_13_1(self):
+        self.compare_excel_files("QA/PDF-Reader-unittest/TestCasesAPI/ORIG Files/Pages from 1-99 Hannibal Regional Time File 6.24.23 ORIG.xlsx", "QA/Output Files/OUTPUT API/Pages from 1-99 Hannibal Regional Time File 6.24.23.xlsx")
         self.assertTrue(True)
-        print("TEST 12.3 API CORRECT:The Hannibal 4.15.23.xlsx data match the original version.")
+        print("TEST 13.1 API CORRECT:Pages from 1-99 Hannibal Regional Time File 6.24.23 ORIG.xlsx data match the original version.")
+    
+    def test_API_13_2(self):
+        self.compare_excel_files("QA/PDF-Reader-unittest/TestCasesAPI/ORIG Files/Pages from 100-195 Hannibal Regional Time File 6.24.23-2 ORIG.xlsx", "QA/Output Files/OUTPUT API/Pages from 100-195 Hannibal Regional Time File 6.24.23-2.xlsx")
+        self.assertTrue(True)
+        print("TEST 13.2 API CORRECT:The Hannibal 4.15.23.xlsx data match the original version.")
         
 
 if __name__ == '__main__':

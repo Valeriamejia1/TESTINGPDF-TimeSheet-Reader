@@ -24,7 +24,9 @@ pdf_files = ["QA/PDF/API/Dawson, Kathleen.pdf",
              "QA/PDF/API/Pages from 359-517 TMMC W.E. 4.22.pdf",
              "QA/PDF/API/Pages from 1-95 Hannibal 4.15.23.pdf",
              "QA/PDF/API/Pages from 1-95 Hannibal 4.15.23.pdf",
-             "QA/PDF/API/Pages from 96-191 Hannibal 4.15.23-2.pdf"
+             "QA/PDF/API/Pages from 96-191 Hannibal 4.15.23-2.pdf",
+             "QA/PDF/API/Pages from 1-99 Hannibal Regional Time File 6.24.23.pdf",
+             "QA/PDF/API/Pages from 100-195 Hannibal Regional Time File 6.24.23-2.pdf"
 
              ]  
 
