@@ -193,7 +193,7 @@ class TestExcel(unittest.TestCase):
         # File: TMMC WITH SCHED
 
         # Upload Excel file
-        df = pd.read_excel("QA\Output Files\OUTPUT API\Pages Maldonado, Chekra from TMMC W.E. 4.22-2 SCHED.xlsx", sheet_name="OutputData")
+        df = pd.read_excel("QA/Output Files/OUTPUT API/Pages Maldonado, Chekra from TMMC W.E. 4.22-2 SCHED.xlsx", sheet_name="OutputData")
 
         # Format the date and time columns to match the expected format.
         df["STARTDTM"] = pd.to_datetime(df["STARTDTM"], format="%m/%d/%Y %H:%M")
@@ -244,8 +244,8 @@ class TestExcel(unittest.TestCase):
         # File: TMMC WITH SCHED
 
         # Upload Excel file
-        df_output = pd.read_excel("QA\Output Files\OUTPUT API\Pages Maldonado, Chekra from TMMC W.E. 4.22-2 SCHED.xlsx", sheet_name="OutputData")
-        df_raw = pd.read_excel("QA\Output Files\OUTPUT API\Pages Maldonado, Chekra from TMMC W.E. 4.22-2 SCHED.xlsx", sheet_name="RawData")
+        df_output = pd.read_excel("QA/Output Files/OUTPUT API/Pages Maldonado, Chekra from TMMC W.E. 4.22-2 SCHED.xlsx", sheet_name="OutputData")
+        df_raw = pd.read_excel("QA/Output Files/OUTPUT API/Pages Maldonado, Chekra from TMMC W.E. 4.22-2 SCHED.xlsx", sheet_name="RawData")
 
         # Format the date and time columns to match the expected format.
         df_output["STARTDTM"] = pd.to_datetime(df_output["STARTDTM"], format="%m/%d/%Y %H:%M")
@@ -385,7 +385,7 @@ class TestExcel(unittest.TestCase):
         #File: TMMC WITH SCHED
 
         # Loads the Excel file in a DataFrame
-        df = pd.read_excel("QA\Output Files\OUTPUT API\Pages Maldonado, Chekra from TMMC W.E. 4.22-2 SCHED.xlsx", sheet_name="OutputData")
+        df = pd.read_excel("QA/Output Files/OUTPUT API/Pages Maldonado, Chekra from TMMC W.E. 4.22-2 SCHED.xlsx", sheet_name="OutputData")
         
         # Verify the number of rows
         self.assertEqual(len(df), 36-1, "Number of rows is not equal to 22")
@@ -397,7 +397,7 @@ class TestExcel(unittest.TestCase):
         names = df["NAME"]
         
         # Verify the values in the first and last row
-        self.assertEqual(names.iloc[9], "Maldonado, Marleny", "The value in the nine row of 'NAME' is not 'Maldonado, Marleny'.")
+        self.assertEqual(names.iloc[], "Maldonado, Marleny", "The value in the nine row of 'NAME' is not 'Maldonado, Marleny'.")
         self.assertEqual(names.iloc[-1], "Chekabab, Zahra", "The value in the last row of 'NAME' is not 'Chekabab, Zahra'.")
 
         print("TEST 11.4 API CORRECT: Checked that the file Pages Maldonado, Chekra from TMMC W.E. 4.22-2 SCHED.xlsx still has the same number of rows and that the first and last row are the same.")
