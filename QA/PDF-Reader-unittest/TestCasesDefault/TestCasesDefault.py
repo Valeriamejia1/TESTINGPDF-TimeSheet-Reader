@@ -22,7 +22,7 @@ class ExcelTestCase(unittest.TestCase):
 
             self.fail("There are {} additional rows with data in the Excel file".format(num_data_rows))
         
-        #print(".TEST 1 DEFAULT CORRECT: The DEFAULT Empty.xlsx file not contains additional rows to the header")
+        print(".TEST 1 DEFAULT CORRECT: The DEFAULT Empty.xlsx file not contains additional rows to the header")
 
     def test_DEFAULT_2(self):
     # Excel files you wish to validate along with their names
