@@ -45,7 +45,7 @@ for pdf_file in pdf_files:
     result = main(response, pdf_file, reportType, from_convert_pdf_Default=True)
 
     if result:
-        print(f"The conversion File {pdf_file} was successful.")
+        print(f"The conversion File {pdf_file} minutes was successful.")
     else:
         print(f"The conversion File {pdf_file} failed or no data was found.")
     
@@ -59,6 +59,6 @@ for pdf_file in pdf_files:
     result = main(response, pdf_file, reportType, from_convert_pdf_Default=True)
 
     if result:
-        print(f"The conversion File {pdf_file} MINUTES was successful.")
+        print(f"The conversion File {pdf_file} was successful.")
     else:
         print(f"The conversion File {pdf_file} failed or no data was found.")

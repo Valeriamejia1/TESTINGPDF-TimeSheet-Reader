@@ -114,8 +114,8 @@ class ExcelTestCase(unittest.TestCase):
     
     def test_DEFAULT_4_1(self):
 
-        files = ["QA\Output Files\OUTPUT Default\Pages 1-101 from 06-11 minutes.xlsx", 
-                 "QA\Output Files\OUTPUT Default\Pages 1-101 from 06-11.xlsx"]
+        files = ["QA/Output Files/OUTPUT Default/Pages 1-101 from 06-11 minutes.xlsx", 
+                 "QA/Output Files/OUTPUT Default/Pages 1-101 from 06-11.xlsx"]
 
         all_errors = []  # List to store all the errors found
 
@@ -149,8 +149,8 @@ class ExcelTestCase(unittest.TestCase):
         print("TEST 4.1 DEFAULT CORRECT: FILE TEST 6-11 BROOKE CORRECT: All GLCODEs for Brooke are valid.")
 
     def test_DEFAULT_4_2(self):
-        files = ["QA\Output Files\OUTPUT Default\Pages 1-101 from 06-11 minutes.xlsx",
-                  "QA\Output Files\OUTPUT Default\Pages 1-101 from 06-11.xlsx"]
+        files = ["QA/Output Files/OUTPUT Default/Pages 1-101 from 06-11 minutes.xlsx",
+                  "QA/Output Files/OUTPUT Default/Pages 1-101 from 06-11.xlsx"]
 
         all_errors = []  # List for storing all errors found
 
@@ -572,7 +572,7 @@ class ExcelTestCase(unittest.TestCase):
 
     def test_DEFAULT_14(self):
         # File path and name of the Excel file
-        excel_file = 'QA\Output Files\OUTPUT Default\Pages 1-101 from 06-11.xlsx'
+        excel_file = 'QA/Output Files/OUTPUT Default/Pages 1-101 from 06-11.xlsx'
         
         # Sheet name in the Excel file
         excel_sheet = 'Sheet1'
@@ -605,7 +605,7 @@ class ExcelTestCase(unittest.TestCase):
     
     def test_DEFAULT_15(self):
         # File path and name of the Excel file
-        excel_file = 'QA\Output Files\OUTPUT Default\Pages 1-101 from 06-11.xlsx'
+        excel_file = 'QA/Output Files/OUTPUT Default/Pages 1-101 from 06-11.xlsx'
         
         # Sheet name in the Excel file
         excel_sheet = 'Sheet1'
@@ -628,8 +628,8 @@ class ExcelTestCase(unittest.TestCase):
     def test_DEFAULT_16(self):
         #Files: QA/Output Files/OUTPUT Default/06-11 minutes.xlsx , QA/Output Files/OUTPUT Default/06-11.xlsx
         # Descriotion: Check if the nurse has her last comment that is located in the next page
-        file_paths = ['QA\Output Files\OUTPUT Default\Pages 1-101 from 06-11.xlsx', 
-                      'QA\Output Files\OUTPUT Default\Pages 1-101 from 06-11 minutes.xlsx']
+        file_paths = ['QA/Output Files/OUTPUT Default/Pages 1-101 from 06-11.xlsx', 
+                      'QA/Output Files/OUTPUT Default/Pages 1-101 from 06-11 minutes.xlsx']
 
         # Name to search and data to verify in the 'Comments' column
         name_to_find = 'Casey, Quentasha'
@@ -664,10 +664,10 @@ class ExcelTestCase(unittest.TestCase):
 
     def test_DEFAULT_17(self):
         # List of files to validate
-        file_paths = ['QA\Output Files\OUTPUT Default\Pages 1-101 from 06-11.xlsx', 
-                      'QA\Output Files\OUTPUT Default\Pages 1-101 from 06-11 minutes.xlsx',
-                      "QA\Output Files\OUTPUT Default\Pages 102-189 from 06-11.xlsx",
-                      "QA\Output Files\OUTPUT Default\Pages 102-189 from 06-11 minutes.xlsx"]
+        file_paths = ['QA/Output Files/OUTPUT Default/Pages 1-101 from 06-11.xlsx', 
+                      'QA/Output Files/OUTPUT Default/Pages 1-101 from 06-11 minutes.xlsx',
+                      "QA/Output Files/OUTPUT Default/Pages 102-189 from 06-11.xlsx",
+                      "QA/Output Files/OUTPUT Default/Pages 102-189 from 06-11 minutes.xlsx"]
 
         # Word to search for in the 'Comments' column
         word_to_find = 'UPO'
@@ -696,10 +696,10 @@ class ExcelTestCase(unittest.TestCase):
 
     def test_DEFAULT_18(self):
         file_paths = [
-            'QA\Output Files\OUTPUT Default\Pages 1-101 from 06-11.xlsx', 
-                      'QA\Output Files\OUTPUT Default\Pages 1-101 from 06-11 minutes.xlsx',
-                      "QA\Output Files\OUTPUT Default\Pages 102-189 from 06-11.xlsx",
-                      "QA\Output Files\OUTPUT Default\Pages 102-189 from 06-11 minutes.xlsx"
+            'QA/Output Files/OUTPUT Default/Pages 1-101 from 06-11.xlsx', 
+                      'QA/Output Files/OUTPUT Default/Pages 1-101 from 06-11 minutes.xlsx',
+                      "QA/Output Files/OUTPUT Default/Pages 102-189 from 06-11.xlsx",
+                      "QA/Output Files/OUTPUT Default/Pages 102-189 from 06-11 minutes.xlsx"
         ]
         
         all_errors = []
@@ -791,8 +791,8 @@ class ExcelTestCase(unittest.TestCase):
 
     def test_DEFAULT_19_2_1(self):
         file_paths = [
-            "QA\Output Files\OUTPUT Default\Pages 1-121 from 1690203601050_1994364726.xlsx",
-            "QA\Output Files\OUTPUT Default\Pages 1-121 from 1690203601050_1994364726 minutes.xlsx"
+            "QA/Output Files/OUTPUT Default/Pages 1-121 from 1690203601050_1994364726.xlsx",
+            "QA/Output Files/OUTPUT Default/Pages 1-121 from 1690203601050_1994364726 minutes.xlsx"
         ]
         
         expected_glcode_count = 66
@@ -822,8 +822,8 @@ class ExcelTestCase(unittest.TestCase):
 
     def test_DEFAULT_19_2_2(self):
         file_paths = [
-            "QA\Output Files\OUTPUT Default\Pages from Pages 121-242 from 1690203601050_1994364726 minutes.xlsx",
-            "QA\Output Files\OUTPUT Default\Pages from Pages 121-242 from 1690203601050_1994364726.xlsx"
+            "QA/Output Files/OUTPUT Default/Pages from Pages 121-242 from 1690203601050_1994364726 minutes.xlsx",
+            "QA/Output Files/OUTPUT Default/Pages from Pages 121-242 from 1690203601050_1994364726.xlsx"
         ]
         
         expected_glcode_count = 48
@@ -853,8 +853,8 @@ class ExcelTestCase(unittest.TestCase):
 
     def test_DEFAULT_19_2_3(self):
         file_paths = [
-            "QA\Output Files\OUTPUT Default\Pages 243-362from 1690203601050_1994364726-2 minutes.xlsx",
-            "QA\Output Files\OUTPUT Default\Pages 243-362from 1690203601050_1994364726-2.xlsx"
+            "QA/Output Files/OUTPUT Default/Pages 243-362from 1690203601050_1994364726-2 minutes.xlsx",
+            "QA/Output Files/OUTPUT Default/Pages 243-362from 1690203601050_1994364726-2.xlsx"
         ]
         
         expected_glcode_count = 80
@@ -884,8 +884,8 @@ class ExcelTestCase(unittest.TestCase):
 
     def test_DEFAULT_19_2_4(self):
         file_paths = [
-            "QA\Output Files\OUTPUT Default\Pages from Pages 365-483 from 1690203601050_1994364726-2 minutes.xlsx",
-            "QA\Output Files\OUTPUT Default\Pages from Pages 365-483 from 1690203601050_1994364726-2.xlsx"
+            "QA/Output Files/OUTPUT Default/Pages from Pages 365-483 from 1690203601050_1994364726-2 minutes.xlsx",
+            "QA/Output Files/OUTPUT Default/Pages from Pages 365-483 from 1690203601050_1994364726-2.xlsx"
         ]
         
         expected_glcode_count = 83
