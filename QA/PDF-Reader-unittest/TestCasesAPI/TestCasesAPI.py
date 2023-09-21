@@ -11,7 +11,7 @@ class TestExcel(unittest.TestCase):
         # Lista de archivos que deseas verificar
         file_paths = ["QA/Output Files/OUTPUT API/Pages from 1-130 TMMC W.E. 4.22 SCHED.xlsx", 
                       "QA/Output Files/OUTPUT API/Pages from 131-264 TMMC W.E. 4.22-5 SCHED.xlsx", 
-                      "QA/Output Files/OUTPUT API/Pages from 265-398TMMC W.E. 4.22-6 SCHED.xlsx",
+                      "QA/Output Files/OUTPUT API/Pages from 265-398 TMMC W.E. 4.22-6 SCHED.xlsx",
                       "QA/Output Files/OUTPUT API/Pages from 398-517 TMMC W.E. 4.22 SCHED.xlsx"]
 
         expected_values = ["LUNCH", "LCUP", "SHDIF"]
@@ -61,7 +61,7 @@ class TestExcel(unittest.TestCase):
         # Lista de archivos que deseas verificar
         file_paths = ["QA/Output Files/OUTPUT API/Pages from 1-130 TMMC W.E. 4.22.xlsx",
                       "QA/Output Files/OUTPUT API/Pages from 131-264 TMMC W.E. 4.22-5.xlsx",
-                      "QA/Output Files/OUTPUT API/Pages from 265-398TMMC W.E. 4.22-6.xlsx",
+                      "QA/Output Files/OUTPUT API/Pages from 265-398 TMMC W.E. 4.22-6.xlsx",
                       "QA/Output Files/OUTPUT API/Pages from 398-517 TMMC W.E. 4.22.xlsx"]
 
         expected_values = ["SCHED"]
@@ -89,7 +89,7 @@ class TestExcel(unittest.TestCase):
         # Lista de archivos que deseas verificar
         file_paths = ["QA/Output Files/OUTPUT API/Pages from 1-130 TMMC W.E. 4.22.xlsx",
                       "QA/Output Files/OUTPUT API/Pages from 131-264 TMMC W.E. 4.22-5.xlsx",
-                      "QA/Output Files/OUTPUT API/Pages from 265-398TMMC W.E. 4.22-6.xlsx",
+                      "QA/Output Files/OUTPUT API/Pages from 265-398 TMMC W.E. 4.22-6.xlsx",
                       "QA/Output Files/OUTPUT API/Pages from 398-517 TMMC W.E. 4.22.xlsx"]
 
         for file_path in file_paths:
@@ -362,10 +362,10 @@ class TestExcel(unittest.TestCase):
         #File: TMMC WITH SCHED
 
         # Loads the Excel file in a DataFrame
-        df = pd.read_excel("QA/Output Files/OUTPUT API/Pages from 265-398TMMC W.E. 4.22-6 SCHED.xlsx", sheet_name="OutputData")
+        df = pd.read_excel("QA/Output Files/OUTPUT API/Pages from 265-398 TMMC W.E. 4.22-6 SCHED.xlsx", sheet_name="OutputData")
         
         # Verify the number of rows
-        self.assertEqual(len(df), 342-1, "Number of rows is not equal to 1349")
+        self.assertEqual(len(df), 342-1, "Number of rows is not equal to 341")
         
         # Verify the existence of the column "NAME".
         self.assertIn("NAME", df.columns, "The column 'NAME' was not found")
@@ -377,7 +377,7 @@ class TestExcel(unittest.TestCase):
         self.assertEqual(names.iloc[0], "Monteagudo, Kathleen J", "The value in the first row of 'NAME' is not 'Monteagudo, Kathleen J'.")
         self.assertEqual(names.iloc[-1], "Martins, Molly", "The value in the last row of 'NAME' is not 'Martins, Molly'.")
 
-        print("TEST 11.3 API CORRECT: Checked that the file Pages from 265-398TMMC W.E. 4.22-6 SCHED.xlsx still has the same number of rows and that the first and last row are the same.")
+        print("TEST 11.3 API CORRECT: Checked that the file Pages from 265-398 TMMC W.E. 4.22-6 SCHED.xlsx still has the same number of rows and that the first and last row are the same.")
 
     def test_API_11_4(self):
 
@@ -397,7 +397,7 @@ class TestExcel(unittest.TestCase):
         names = df["NAME"]
         
         # Verify the values in the first and last row
-        self.assertEqual(names.iloc[], "Maldonado, Marleny", "The value in the nine row of 'NAME' is not 'Maldonado, Marleny'.")
+        self.assertEqual(names.iloc[9], "Maldonado, Marleny", "The value in the nine row of 'NAME' is not 'Maldonado, Marleny'.")
         self.assertEqual(names.iloc[-1], "Chekabab, Zahra", "The value in the last row of 'NAME' is not 'Chekabab, Zahra'.")
 
         print("TEST 11.4 API CORRECT: Checked that the file Pages Maldonado, Chekra from TMMC W.E. 4.22-2 SCHED.xlsx still has the same number of rows and that the first and last row are the same.")

@@ -14,9 +14,7 @@ from Modules.pdfAPI import main
 # Lista de nombres de archivos PDF a convertir
 pdf_files = ["QA/PDF/API/Dawson, Kathleen.pdf", 
              "QA/PDF/API/Delta Health 4.15.23.pdf", 
-             #"QA/PDF/API/Hannibal 4.15.23.pdf"             , pega jenkins
              "QA/PDF/API/Mattox, Kyle.pdf", 
-             #"QA/PDF/API/TMMC W.E. 4.22.pdf"               , pega jenkins
              "QA/PDF/API/API Empty.pdf",
              "QA/PDF/API/Pages from 1-130 TMMC W.E. 4.22.pdf",   
              "QA/PDF/API/Pages from 131-264 TMMC W.E. 4.22-5.pdf",
@@ -27,7 +25,6 @@ pdf_files = ["QA/PDF/API/Dawson, Kathleen.pdf",
              "QA/PDF/API/Pages from 96-191 Hannibal 4.15.23-2.pdf",
              "QA/PDF/API/Pages from 1-99 Hannibal Regional Time File 6.24.23.pdf",
              "QA/PDF/API/Pages from 100-195 Hannibal Regional Time File 6.24.23-2.pdf"
-
              ]  
 
 reportType = "API Format"  # Reemplaza con el tipo de informe correcto
