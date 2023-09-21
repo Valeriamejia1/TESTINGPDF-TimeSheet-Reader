@@ -71,10 +71,14 @@ class ExcelTestCase(unittest.TestCase):
         return len(glcode_sin_guiones) == 9 and glcode_sin_guiones.isdigit()
 
     def test_DEFAULT_3(self):
-        files = ["QA/Output Files/OUTPUT Default/Pages 1-100 from Combined File.xlsx", 
-                 "QA/Output Files/OUTPUT Default/Pages 101-199 from Combined File.xlsx",
-                 "QA/Output Files/OUTPUT Default/Pages 1-100 from Combined File minutes.xlsx",
-                 "QA/Output Files/OUTPUT Default/Pages 101-199 from Combined File minutes.xlsx"]
+        files = ["QA/Output Files/OUTPUT Default/Pages 1-50 from Combined File minutes.xlsx", 
+                 "QA/Output Files/OUTPUT Default/Pages 1-50 from Combined File.xlsx",
+                 "QA/Output Files/OUTPUT Default/Pages 51-100 from Combined File minutes.xlsx",
+                 "QA/Output Files/OUTPUT Default/Pages 51-100 from Combined File.xlsx",
+                 "QA/Output Files/OUTPUT Default/Pages 101-150 from Combined File minutes.xlsx",
+                 "QA/Output Files/OUTPUT Default/Pages 101-150 from Combined File.xlsx",
+                 "QA/Output Files/OUTPUT Default/Pages 151-199 from Combined File minutes.xlsx",
+                 "QA/Output Files/OUTPUT Default/Pages 151-199 from Combined File.xlsx"]
 
         all_incorrect_rows = set()  # We use a set to store the incorrect rows without duplicates
 
@@ -110,7 +114,8 @@ class ExcelTestCase(unittest.TestCase):
     
     def test_DEFAULT_4_1(self):
 
-        files = ["QA/Output Files/OUTPUT Default/06-11 minutes.xlsx", "QA/Output Files/OUTPUT Default/06-11.xlsx"]
+        files = ["QA\Output Files\OUTPUT Default\Pages 1-101 from 06-11 minutes.xlsx", 
+                 "QA\Output Files\OUTPUT Default\Pages 1-101 from 06-11.xlsx"]
 
         all_errors = []  # List to store all the errors found
 
@@ -144,7 +149,8 @@ class ExcelTestCase(unittest.TestCase):
         print("TEST 4.1 DEFAULT CORRECT: FILE TEST 6-11 BROOKE CORRECT: All GLCODEs for Brooke are valid.")
 
     def test_DEFAULT_4_2(self):
-        files = ["QA/Output Files/OUTPUT Default/06-11.xlsx", "QA/Output Files/OUTPUT Default/06-11 minutes.xlsx"]
+        files = ["QA\Output Files\OUTPUT Default\Pages 1-101 from 06-11 minutes.xlsx",
+                  "QA\Output Files\OUTPUT Default\Pages 1-101 from 06-11.xlsx"]
 
         all_errors = []  # List for storing all errors found
 
@@ -517,8 +523,10 @@ class ExcelTestCase(unittest.TestCase):
         # Add the 'self' parameter
         # List of file paths and sheet names to validate
         file_data = [
-            {'file_path': 'QA/Output Files/OUTPUT Default/06-11.xlsx', 'sheet_name': 'Sheet1'},
-            {'file_path': 'QA/Output Files/OUTPUT Default/06-11 minutes.xlsx', 'sheet_name': 'Sheet1'}
+            {'file_path': 'QA/Output Files/OUTPUT Default/Pages 1-101 from 06-11 minutes.xlsx', 'sheet_name': 'Sheet1'},
+            {'file_path': 'QA/Output Files/OUTPUT Default/Pages 102-189 from 06-11 minutes.xlsx', 'sheet_name': 'Sheet1'},
+            {'file_path': 'QA/Output Files/OUTPUT Default/Pages 1-101 from 06-11.xlsx', 'sheet_name': 'Sheet1'},
+            {'file_path': 'QA/Output Files/OUTPUT Default/Pages 102-189 from 06-11.xlsx', 'sheet_name': 'Sheet1'}
         ]
 
         # List to store all error messages
@@ -564,7 +572,7 @@ class ExcelTestCase(unittest.TestCase):
 
     def test_DEFAULT_14(self):
         # File path and name of the Excel file
-        excel_file = 'QA/Output Files/OUTPUT Default/06-11.xlsx'
+        excel_file = 'QA\Output Files\OUTPUT Default\Pages 1-101 from 06-11.xlsx'
         
         # Sheet name in the Excel file
         excel_sheet = 'Sheet1'
@@ -597,7 +605,7 @@ class ExcelTestCase(unittest.TestCase):
     
     def test_DEFAULT_15(self):
         # File path and name of the Excel file
-        excel_file = 'QA/Output Files/OUTPUT Default/06-11.xlsx'
+        excel_file = 'QA\Output Files\OUTPUT Default\Pages 1-101 from 06-11.xlsx'
         
         # Sheet name in the Excel file
         excel_sheet = 'Sheet1'
@@ -620,7 +628,8 @@ class ExcelTestCase(unittest.TestCase):
     def test_DEFAULT_16(self):
         #Files: QA/Output Files/OUTPUT Default/06-11 minutes.xlsx , QA/Output Files/OUTPUT Default/06-11.xlsx
         # Descriotion: Check if the nurse has her last comment that is located in the next page
-        file_paths = ['QA/Output Files/OUTPUT Default/06-11.xlsx', 'QA/Output Files/OUTPUT Default/06-11 minutes.xlsx']
+        file_paths = ['QA\Output Files\OUTPUT Default\Pages 1-101 from 06-11.xlsx', 
+                      'QA\Output Files\OUTPUT Default\Pages 1-101 from 06-11 minutes.xlsx']
 
         # Name to search and data to verify in the 'Comments' column
         name_to_find = 'Casey, Quentasha'
@@ -655,7 +664,10 @@ class ExcelTestCase(unittest.TestCase):
 
     def test_DEFAULT_17(self):
         # List of files to validate
-        file_paths = ['QA/Output Files/OUTPUT Default/06-11.xlsx', 'QA/Output Files/OUTPUT Default/06-11 minutes.xlsx']
+        file_paths = ['QA\Output Files\OUTPUT Default\Pages 1-101 from 06-11.xlsx', 
+                      'QA\Output Files\OUTPUT Default\Pages 1-101 from 06-11 minutes.xlsx',
+                      "QA\Output Files\OUTPUT Default\Pages 102-189 from 06-11.xlsx",
+                      "QA\Output Files\OUTPUT Default\Pages 102-189 from 06-11 minutes.xlsx"]
 
         # Word to search for in the 'Comments' column
         word_to_find = 'UPO'
@@ -684,8 +696,10 @@ class ExcelTestCase(unittest.TestCase):
 
     def test_DEFAULT_18(self):
         file_paths = [
-            "QA/Output Files/OUTPUT Default/06-11.xlsx",
-            "QA/Output Files/OUTPUT Default/06-11 minutes.xlsx"
+            'QA\Output Files\OUTPUT Default\Pages 1-101 from 06-11.xlsx', 
+                      'QA\Output Files\OUTPUT Default\Pages 1-101 from 06-11 minutes.xlsx',
+                      "QA\Output Files\OUTPUT Default\Pages 102-189 from 06-11.xlsx",
+                      "QA\Output Files\OUTPUT Default\Pages 102-189 from 06-11 minutes.xlsx"
         ]
         
         all_errors = []
@@ -777,11 +791,11 @@ class ExcelTestCase(unittest.TestCase):
 
     def test_DEFAULT_19_2_1(self):
         file_paths = [
-            "QA/Output Files/OUTPUT Default/Pages 1-242 from 1690203601050_1994364726 minutes.xlsx",
-            "QA/Output Files/OUTPUT Default/Pages 1-242 from 1690203601050_1994364726.xlsx"
+            "QA\Output Files\OUTPUT Default\Pages 1-121 from 1690203601050_1994364726.xlsx",
+            "QA\Output Files\OUTPUT Default\Pages 1-121 from 1690203601050_1994364726 minutes.xlsx"
         ]
         
-        expected_glcode_count = 114
+        expected_glcode_count = 66
         all_errors = []
         
         for file_path in file_paths:
@@ -808,11 +822,11 @@ class ExcelTestCase(unittest.TestCase):
 
     def test_DEFAULT_19_2_2(self):
         file_paths = [
-            "QA/Output Files/OUTPUT Default/Pages 243-483 from 1690203601050_1994364726-2 minutes.xlsx",
-            "QA/Output Files/OUTPUT Default/Pages 243-483 from 1690203601050_1994364726-2.xlsx"
+            "QA\Output Files\OUTPUT Default\Pages from Pages 121-242 from 1690203601050_1994364726 minutes.xlsx",
+            "QA\Output Files\OUTPUT Default\Pages from Pages 121-242 from 1690203601050_1994364726.xlsx"
         ]
         
-        expected_glcode_count = 163
+        expected_glcode_count = 48
         all_errors = []
         
         for file_path in file_paths:
@@ -837,12 +851,79 @@ class ExcelTestCase(unittest.TestCase):
         else:
             print("TEST 19_2_2 DEFAULT CORRECT: The files have only the expected number of GLCODE cells.") 
 
+    def test_DEFAULT_19_2_3(self):
+        file_paths = [
+            "QA\Output Files\OUTPUT Default\Pages 243-362from 1690203601050_1994364726-2 minutes.xlsx",
+            "QA\Output Files\OUTPUT Default\Pages 243-362from 1690203601050_1994364726-2.xlsx"
+        ]
+        
+        expected_glcode_count = 80
+        all_errors = []
+        
+        for file_path in file_paths:
+            with pd.ExcelFile(file_path) as xls:
+                sheet_names = xls.sheet_names
+                
+                for sheet_name in sheet_names:
+                    df = pd.read_excel(xls, sheet_name)
+                    
+                    if 'GLCODE' in df.columns:
+                        glcode_col = df['GLCODE']
+                        glcode_count = glcode_col.count()
+                        if glcode_count != expected_glcode_count:
+                            error_msg = f"The file: '{file_path}' has {glcode_count} cells with data in the GLCODE column, expected {expected_glcode_count}."
+                            all_errors.append(error_msg)
+                    else:
+                        error_msg = f"The GLCODE column was not found in the sheet '{sheet_name}' of the file '{file_path}'."
+                        all_errors.append(error_msg)
+
+        if all_errors:
+            self.fail('\n'.join(all_errors))
+        else:
+            print("TEST 19_2_3 DEFAULT CORRECT: The files have only the expected number of GLCODE cells.") 
+
+    def test_DEFAULT_19_2_4(self):
+        file_paths = [
+            "QA\Output Files\OUTPUT Default\Pages from Pages 365-483 from 1690203601050_1994364726-2 minutes.xlsx",
+            "QA\Output Files\OUTPUT Default\Pages from Pages 365-483 from 1690203601050_1994364726-2.xlsx"
+        ]
+        
+        expected_glcode_count = 83
+        all_errors = []
+        
+        for file_path in file_paths:
+            with pd.ExcelFile(file_path) as xls:
+                sheet_names = xls.sheet_names
+                
+                for sheet_name in sheet_names:
+                    df = pd.read_excel(xls, sheet_name)
+                    
+                    if 'GLCODE' in df.columns:
+                        glcode_col = df['GLCODE']
+                        glcode_count = glcode_col.count()
+                        if glcode_count != expected_glcode_count:
+                            error_msg = f"The file: '{file_path}' has {glcode_count} cells with data in the GLCODE column, expected {expected_glcode_count}."
+                            all_errors.append(error_msg)
+                    else:
+                        error_msg = f"The GLCODE column was not found in the sheet '{sheet_name}' of the file '{file_path}'."
+                        all_errors.append(error_msg)
+
+        if all_errors:
+            self.fail('\n'.join(all_errors))
+        else:
+            print("TEST 19_2_4 DEFAULT CORRECT: The files have only the expected number of GLCODE cells.") 
+
+
     def test_Default_20(self):
         filenames = [
-            "QA/Output Files/OUTPUT Default/Pages 1-242 from 1690203601050_1994364726 minutes.xlsx",
-            "QA/Output Files/OUTPUT Default/Pages 1-242 from 1690203601050_1994364726.xlsx",
-            "QA/Output Files/OUTPUT Default/Pages 243-483 from 1690203601050_1994364726-2 minutes.xlsx",
-            "QA/Output Files/OUTPUT Default/Pages 243-483 from 1690203601050_1994364726-2.xlsx"
+            "QA/Output Files/OUTPUT Default/Pages 1-121 from 1690203601050_1994364726 minutes.xlsx",
+            "QA/Output Files/OUTPUT Default/Pages 1-121 from 1690203601050_1994364726.xlsx",
+            "QA/Output Files/OUTPUT Default/Pages from Pages 121-242 from 1690203601050_1994364726 minutes.xlsx",
+            "QA/Output Files/OUTPUT Default/Pages from Pages 121-242 from 1690203601050_1994364726.xlsx",
+            "QA/Output Files/OUTPUT Default/Pages 243-362from 1690203601050_1994364726-2 minutes.xlsx",
+            "QA/Output Files/OUTPUT Default/Pages 243-362from 1690203601050_1994364726-2.xlsx",
+            "QA/Output Files/OUTPUT Default/Pages from Pages 365-483 from 1690203601050_1994364726-2 minutes.xlsx",
+            "QA/Output Files/OUTPUT Default/Pages from Pages 365-483 from 1690203601050_1994364726-2.xlsx"
         ]   
         error_messages = []
 
@@ -981,11 +1062,11 @@ class ExcelTestCase(unittest.TestCase):
         #Files: Blinder1
 
     def test_Default_Extra_1(self):
-        self.compare_excel_files("QA/PDF-Reader-unittest/TestCasesDefault/06-11 minutes ORIG.xlsx", "QA/Output Files/OUTPUT Default/06-11 minutes.xlsx")
+        self.compare_excel_files("QA/PDF-Reader-unittest/TestCasesDefault/time weston ORIG.xlsx", "QA/Output Files/OUTPUT Default/time weston.xlsx")
         print("TEST Default Extra 1 CORRECT: 06-11 minutes.xlsx data match the original version")
 
     def test_Default_Extra_2(self):
-        self.compare_excel_files("QA/PDF-Reader-unittest/TestCasesDefault/06-11 ORIG.xlsx", "QA/Output Files/OUTPUT Default/06-11.xlsx")
+        self.compare_excel_files("QA/PDF-Reader-unittest/TestCasesDefault/time weston minutes ORIG.xlsx", "QA/Output Files/OUTPUT Default/time weston minutes.xlsx")
         print("TEST Default Extra 2 CORRECT: 06-11.xlsx data match the original version")
 if __name__ == '__main__':
     unittest.main()
