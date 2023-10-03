@@ -6,7 +6,7 @@ import sys
 # Obtiene el directorio base del script actual (donde se encuentra QA)
 base_dir = os.path.dirname(os.path.abspath(__file__))
 # Agrega el directorio que contiene "Modules" al PATH
-sys.path.append(os.path.join(base_dir, ".."))  # ".." significa el directorio padre
+sys.path.append(os.path.join(base_dir, ".."))  # ".." significa el directorio padree
 
 # Ahora podemos importar el módulo pdfAPI
 from Modules.pdfAPI import main
