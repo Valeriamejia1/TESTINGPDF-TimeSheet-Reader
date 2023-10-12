@@ -11,7 +11,7 @@ sys.path.append(os.path.join(base_dir, ".."))  # ".." significa el directorio pa
 # Ahora podemos importar el módulo pdfAPI
 from Modules.pdfAPI import main
 
-# Lista de nombres de archivos PDF a convertirr
+# Lista de nombres de archivos PDF a convertir
 pdf_files = ["QA/PDF/API/Dawson, Kathleen.pdf", 
              "QA/PDF/API/Delta Health 4.15.23.pdf", 
              "QA/PDF/API/Mattox, Kyle.pdf", 
