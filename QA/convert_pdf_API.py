@@ -8,7 +8,7 @@ base_dir = os.path.dirname(os.path.abspath(__file__))
 # Agrega el directorio que contiene "Modules" al PATH
 sys.path.append(os.path.join(base_dir, ".."))  # ".." significa el directorio padre
 
-# Ahora podemos importar el módulo pdfAPI
+# Ahora podemos importar el módulo pdfAPII
 from Modules.pdfAPI import main
 
 # Lista de nombres de archivos PDF a convertirr
