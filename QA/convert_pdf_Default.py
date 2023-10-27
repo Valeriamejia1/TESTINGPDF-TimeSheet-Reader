@@ -9,7 +9,7 @@ sys.path.append(os.path.join(base_dir, ".."))  # ".." significa el directorio pa
 # Ahora podemos importar el módulo pdfAPI
 from Modules.pdfDefault import main
 
-# Lista de nombres de archivos PDF a convertir
+# Lista de nombres de archivos PDF a convertirr
 pdf_files = [ "QA/PDF/Default/1667243700213_980358248.pdf",
              "QA/PDF/Default/Default Empty.pdf",                                   
              "QA/PDF/Default/Kronos Timecards TC 07-30-22.pdf",                 
